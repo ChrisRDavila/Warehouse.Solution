@@ -20,7 +20,7 @@
 
 ## Setup/Installation Requirements
 
-<!-- Going forward, don't forget to include setup instructions in your README for an appsettings.json with a database connection string. -->
+
 
 * _1. Clone this repo._
 * _X. _dotnet add package MySqlConnector -v 2.2.0_
@@ -49,4 +49,5 @@
 * _should go here_
 
 ## License
+* licensing to be changed on further discussion with client
 [MIT](https://yourlicesnepage)
