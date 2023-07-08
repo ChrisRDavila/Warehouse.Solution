@@ -12,5 +12,6 @@ namespace WarehouseProject.Models
     public int Dimensions { get; set; }
     public int VendorId { get; set; }
     public int WarehouseId { get; set; }
+    public List<WarehouseProduct> JoinEtities { get; }
   }
 }

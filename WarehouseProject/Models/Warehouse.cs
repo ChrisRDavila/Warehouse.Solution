@@ -17,6 +17,6 @@ namespace WarehouseProject.Models
     public string State { get; set; }
     [Required(ErrorMessage = "Please enter a zipcode for the warehouse.")]
     public string WHDescription { get; set; }
-    public List<WarehouseProduct> WarehouseProducts { get; set; }
+    public List<WarehouseProduct> JoinEntities { get; set; }
   }
 }
