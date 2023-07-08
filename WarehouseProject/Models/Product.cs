@@ -1,3 +1,8 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+
+
 namespace WarehouseProject.Models
 {
   public class Product
@@ -12,6 +17,9 @@ namespace WarehouseProject.Models
     public int Dimensions { get; set; }
     public int VendorId { get; set; }
     public int WarehouseId { get; set; }
+    public DateTime DateOrdered { get; set; }
+    public DateTime DateReceived { get; set; }
+    public DateTime DateShipped { get; set; }
     public List<WarehouseProduct> JoinEtities { get; }
   }
 }

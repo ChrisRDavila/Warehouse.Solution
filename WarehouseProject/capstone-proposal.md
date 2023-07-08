@@ -32,4 +32,4 @@
 * _Currency Exchange and Forex API_
 
 ## Additional Notes
-# stretch goals may require new tech upon research, investigating the possiblilty of using JQuery or other libraries to aid in identity set up and UI, as well as authentication
+# stretch goals may require new tech upon research, investigating the possiblilty of using JQuery or other libraries to aid in identity set up and UI, as well as authentication. May change name of Repo bsaed on disgression of client i will be building App for, will discuss with client over the weekend (after 7-7-23)

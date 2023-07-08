@@ -1,8 +1,8 @@
-# (Application Name) remove parens
+# Warehouse Project Solution
 
-#### (Brief Description of Application) remove parens
+#### A C# MVC application for distribution business to log and track inventory, switch to paperless, unite a database for all warehouses and products.  Should enable consumer to create a pick sheet and verify products or find products located in releveant warehouses for oder fullfillment
 
-#### By (Your Name Here) remove parans
+#### By Christopher Davila
 
 ## Technologies Used
 
@@ -10,10 +10,13 @@
 * _cshtml_
 * _C#_
 * _ASP Core MVC_
-_MS Build_
+* _MS Build_
+* _MySQL_
 
 
 ## Description
+# Client should be able to log in and create role, full CRUD functionality for adding warehouse to db and products to db. Client should be able to see list of warehouses that carry product if their warehouse doesnt have a product, and see list of products in current warehouse.
+
 
 ## Setup/Installation Requirements
 
@@ -34,6 +37,10 @@ _MS Build_
 * _5. Use `\$ dotnet test run` in the Test directory to run test on the application_
 * _6. use `\$ dotnet watch run` to cycle the server_
 * _7. use `\$ dotnet watch run --launch-profile "production"` to run in production mode_
+
+## Research and Planning
+
+[jQuery for beginners](https://www.youtube.com/watch?v=ScoURsEM_yU&themeRefresh=1)
 
 
 ## Known Bugs
