@@ -2,5 +2,46 @@
   Layout = "_Layout";
 }
 
-<h1>Welcome to the Project Name!</h1>
-<p>@Html.ActionLink("See all objects", "Route", "Objects")</p> <p>@Html.ActionLink("See all classname2", "Route", "ClassName2")</p>
+@using WarehouseProject.Models;
+
+<h1>Welcome Brocks Warehouse Inventory Tracker</h1>
+
+<hr>
+
+@if (User.Identity.IsAuthenticated)
+{
+  <h4>Hello <span style="color:rgb(63, 94, 88)">@User.Identity.Name! </span></h4>
+  <h4>here are your  entries so far:</h4>
+  <h4><span style="color: brown">Products:</span></h4>
+  @if (Model["products"].Length == 0)
+  {
+    <p>No Products have been added yet!</p>
+  } 
+  <ul>
+    @foreach (Product product in Model["products"])
+    {
+      <li>@Html.ActionLink(@treat.Description, "Details", "Products", new { id = @product.ProductId})</li>
+    }
+  </ul>
+  <h4><span style="color: brown">Warehouses:</span></h4>
+  @if (Model["warehouses"].Length == 0)
+  {
+    <p>No Warehouses have been added yet!</p>
+  } 
+  <ul>
+    @foreach (Warehouse warehouse in Model["warehouses"])
+    {
+      <li>@Html.ActionLink(@warehouse.Type, "Details", "Warehouses", new { id = @warehouse.WarehouseId})</li>
+    }
+  </ul>
+}
+else
+{
+  <p>Please @Html.ActionLink("log in", "LogIn", "Account") to view or manage your entries.</p>
+}
+
+<hr>
+
+<p>@Html.ActionLink("Manage products", "Index", "Products")</p> 
+<p>@Html.ActionLink("Manage warehouses", "Index", "Warehouses")</p>
+<p>@Html.ActionLink("Create or manage an account", "Index", "Account")</p>

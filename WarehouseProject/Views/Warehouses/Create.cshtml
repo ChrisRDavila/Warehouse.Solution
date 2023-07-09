@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@model WarehouseProject.Models.Warehouse
+
+<h4>Add a new warehouse</h4>
+
+<p>@Html.ValidationMessageFor(model => model.Warehouse, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.WarehouseName)
+    @Html.TextBoxFor(model => model.WarehouseName)
+    <br />
+    @Html.LabelFor(model => model.Address)
+    @Html.TextBoxFor(model => model.Address)
+    <br />
+    @Html.LabelFor(model => model.City)
+    @Html.TextBoxFor(model => model.City)
+    <br />
+    @Html.LabelFor(model => model.Country)
+    @Html.TextBoxFor(model => model.Country)
+    <br />
+    @Html.LabelFor(model => model.Zipcode)
+    @Html.TextBoxFor(model => model.Zipcode)
+    <br />
+    @Html.LabelFor(model => model.WHDescription)
+    @Html.TextBoxFor(model => model.WHDescription)
+    <br />
+
+
+    <input type="submit" value="Add new warehouse" class="btn btn-default" />
+}
+<p>@Html.ActionLink("Show all warehouses", "Index")</p>
