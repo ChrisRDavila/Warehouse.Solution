@@ -30,7 +30,7 @@ namespace WarehouseProject.Controllers
       List<Treat> userTreats = _db.Treats
                           .Where(entry => entry.User.Id == currentUser.Id)
                           .ToList();
-      return View(userTreats);
+      return View(userWarehouses);
     }
 
     public ActionResult Create()
@@ -39,79 +39,79 @@ namespace WarehouseProject.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult> Create(Treat treat)
+    public async Task<ActionResult> Create(Warehouse warehouse)
     {
       string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-      treat.User = currentUser;
-      _db.Treats.Add(treat);
+      warehouse.User = currentUser;
+      _db.Warehouses.Add(warehouse);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Details(int id)
     {
-      Treat thisTreat = _db.Treats
-          .Include(treat => treat.JoinEntities)
-          .ThenInclude(join => join.Flavor)
-          .FirstOrDefault(treat => treat.TreatId == id);
-      return View(thisTreat);
+      Warehouse thisWarehouse = _db.Warehouses
+          .Include(warehouse => warehouse.JoinEntities)
+          .ThenInclude(join => join.Product)
+          .FirstOrDefault(warehouse => warehouse.WarehouseId == id);
+      return View(thisWarehouse);
     }
 
     public ActionResult Edit(int id)
     {
-      Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
-      return View(thisTreat);
+      Warehouse thisWarehouse = _db.Warehouses.FirstOrDefault(warehouse => warehouse.WarehouseId == id);
+      return View(thisWarehouse);
     }
 
     [HttpPost]
-    public ActionResult Edit(Treat treat)
+    public ActionResult Edit(Warehouse warehouse)
     {
-      _db.Treats.Update(treat);
+      _db.Warehouses.Update(warehouse);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Delete(int id)
     {
-      Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
-      return View(thisTreat);
+      Warehouse thisWarehouse = _db.Warehouses.FirstOrDefault(warehouse => warehouse.WarehouseId == id);
+      return View(thisWarehouse);
     }
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-      Treat thisTreat = _db.Treats.FirstOrDefault(treat => treat.TreatId == id);
-      _db.Treats.Remove(thisTreat);
+      Warehouse thisWarehouse = _db.Warehouses.FirstOrDefault(warehouse => warehouse.WarehouseId == id);
+      _db.WArehouses.Remove(thisWarehouse);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
     public ActionResult AddFlavor(int id)
     {
-      Treat thisTreat = _db.Treats.FirstOrDefault(treats => treats.TreatId == id);
-      ViewBag.FlavorId = new SelectList(_db.Flavors, "FlavorId", "Type");
-      return View(thisTreat);
+      Waerhouse thisWarehouse = _db.Warehouses.FirstOrDefault(warehouses => warehouses.WarehouseId == id);
+      ViewBag.ProductId = new SelectList(_db.Products, "ProductId", "ProductName");
+      return View(thisWarehouse);
     }
 
     [HttpPost]
-    public ActionResult AddFlavor(Treat treat, int flavorId)
+    public ActionResult AddProduct(Warehouse warehouse, int productId)
     {
       #nullable enable
-      TreatFlavor? joinEntity = _db.TreatFlavors.FirstOrDefault(join => (join.FlavorId == flavorId && join.TreatId == treat.TreatId));
+      WarehouseProduct? joinEntity = _db.WarehouseProducts.FirstOrDefault(join => (join.ProductId == productId && join.WarehouseId == warehouse.WarehouseId));
       #nullable disable
-      if (joinEntity == null && flavorId != 0)
+      if (joinEntity == null && productId != 0)
       {
-        _db.TreatFlavors.Add(new TreatFlavor() { FlavorId = flavorId, TreatId = treat.TreatId });
+        _db.WarehouseProducts.Add(new WarehouseProduct() { ProductId = productId, WarehouseId = warehouse.WarehouseId });
         _db.SaveChanges();
       }
-      return RedirectToAction("Details", new { id = treat.TreatId });
+      return RedirectToAction("Details", new { id = warehouse.WarehouseId });
     }   
 
     [HttpPost]
     public ActionResult DeleteJoin(int joinId)
     {
-      TreatFlavor joinEntry = _db.TreatFlavors.FirstOrDefault(entry => entry.TreatFlavorId == joinId);
-      _db.TreatFlavors.Remove(joinEntry);
+      WarehouseProduct joinEntry = _db.WarehouseProducts.FirstOrDefault(entry => entry.WarehouseProductId == joinId);
+      _db.WarehouseProducts.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     } 
