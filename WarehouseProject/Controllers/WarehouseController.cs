@@ -27,7 +27,7 @@ namespace WarehouseProject.Controllers
     {
       string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-      List<Treat> userTreats = _db.Treats
+      List<Warehouse> userWarehouses = _db.Warehouses
                           .Where(entry => entry.User.Id == currentUser.Id)
                           .ToList();
       return View(userWarehouses);
@@ -82,13 +82,13 @@ namespace WarehouseProject.Controllers
     public ActionResult DeleteConfirmed(int id)
     {
       Warehouse thisWarehouse = _db.Warehouses.FirstOrDefault(warehouse => warehouse.WarehouseId == id);
-      _db.WArehouses.Remove(thisWarehouse);
+      _db.Warehouses.Remove(thisWarehouse);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
     public ActionResult AddFlavor(int id)
     {
-      Waerhouse thisWarehouse = _db.Warehouses.FirstOrDefault(warehouses => warehouses.WarehouseId == id);
+      Warehouse thisWarehouse = _db.Warehouses.FirstOrDefault(warehouses => warehouses.WarehouseId == id);
       ViewBag.ProductId = new SelectList(_db.Products, "ProductId", "ProductName");
       return View(thisWarehouse);
     }
