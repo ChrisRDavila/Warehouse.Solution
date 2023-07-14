@@ -43,7 +43,7 @@ namespace WarehouseProject.Controllers
     {
       string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-      treat.User = currentUser;
+      product.User = currentUser;
       _db.Products.Add(product);
       _db.SaveChanges();
       return RedirectToAction("Index");
@@ -89,7 +89,7 @@ namespace WarehouseProject.Controllers
     public ActionResult AddWarehouse(int id)
     {
       Product thisProduct = _db.Products.FirstOrDefault(products => products.ProductId == id);
-      ViewBag.WArehouseId = new SelectList(_db.WArehouses, "WarehouseId", "WarehouseName");
+      ViewBag.WarehouseId = new SelectList(_db.Warehouses, "WarehouseId", "WarehouseName");
       return View(thisProduct);
     }
 
@@ -99,7 +99,7 @@ namespace WarehouseProject.Controllers
       #nullable enable
       WarehouseProduct? joinEntity = _db.WarehouseProducts.FirstOrDefault(join => (join.WarehouseId == warehouseId && join.ProductId == product.ProductId));
       #nullable disable
-      if (joinEntity == null && WArehouseId != 0)
+      if (joinEntity == null && warehouseId != 0)
       {
         _db.WarehouseProducts.Add(new WarehouseProduct() { WarehouseId = warehouseId, ProductId = product.ProductId });
         _db.SaveChanges();
