@@ -12,7 +12,7 @@ namespace WarehouseProject.Controllers
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly SignInManager<ApplicationUser> _signInManager;
 
-    public AccountController (UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, WarehouseProject db)
+    public AccountController (UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, WarehouseProjectContext db)
     {
       _userManager = userManager;
       _signInManager = signInManager;
