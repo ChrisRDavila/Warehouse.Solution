@@ -24,5 +24,6 @@ namespace WarehouseProject.Models
     public Picklist Picklist { get; set; }//add to create
     public List<WarehouseProduct> JoinEntities { get; }
     public ApplicationUser User { get; set; }
+    public Boolean Picked { get; set; }
   }
 }

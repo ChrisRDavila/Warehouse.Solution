@@ -1,0 +1,26 @@
+@{
+  Layout = "_Layout";
+}
+
+@model WarehouseProject.Models.Picklist
+
+<h4>Add a new picklist</h4>
+<div class="input">
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.OrderNumber)
+  @Html.TextBoxFor(model => model.OrderNumber)<br>
+  @Html.LabelFor(model => model.OrderFor)
+  @Html.TextBoxFor(model => model.OrderFor)<br>
+  @Html.LabelFor(model => model.Fulfilled)
+  @Html.EditorFor(model => model.Fulfilled)<br>
+  @Html.LabelFor(model => model.Picker)
+  @Html.TextBoxFor(model => model.Picker)<br>
+  @Html.LabelFor(model => model.CreatedDate)
+  @Html.EditorFor(model => model.CreatedDate)<br>
+  @Html.LabelFor(model => model.DueDate)
+  @Html.EditorFor(model => model.DueDate)<br>
+  <input type="submit" value="Add new picklist" />
+}
+</div>
+<p>@Html.ActionLink("Show all picklists", "Index")</p>
