@@ -30,6 +30,8 @@
     @Html.EditorFor(model => model.DateReceived)
     @Html.LabelFor(model => model.DateShipped)
     @Html.EditorFor(model => model.DateShipped)
+    @Html.LabelFor(model => model.Picked, "Status")
+  @Html.EditorFor(model => model.Picked)
 
     <input type="submit" value="Add new flavor" class="btn btn-default" />
 }

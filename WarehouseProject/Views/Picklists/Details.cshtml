@@ -1,0 +1,34 @@
+@{
+  Layout = "_Layout";
+}
+
+@model WarehouseProject.Models.Picklist
+@using WarehouseProject.Models
+
+<h2>Picklist Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.OrderNumber): @Html.DisplayFor(model => model.OrderNumber)<h3>
+<h3>@Html.DisplayNameFor(model => model.OrderFor): @Html.DisplayFor(model => model.OrderFor)</h3>
+<h3>@Html.DisplayFor(model => model.Fulfilled): @Html.DisplayFor(model => model.Fulfilled)</h3>
+<h3>@Html.DisplayNameFor(model => model.Picker): @Html.DisplayFor(model => model.Picker)</h3>
+<h3>@Html.DisplayNameFor(model => model.CreatedDate): @Html.DisplayFor(model => model.CreatedDate)</h3>
+<h3>@Html.DisplayNameFor(model => model.DueDate): @Html.DisplayFor(model => model.DueDate)</h3>
+  
+@if (@Model.Products.Count == 0)
+{
+  <h3>No items have been added to this picklist yet!</h3>
+} 
+else
+{
+  <h3>Products:</h3>
+  <ul>
+    @foreach (Product product in Model.Products)
+    {
+      <li>@Html.ActionLink($"{product.ProductName}", "Details", "Products", new { id = product.ProductId })</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Update Picklist", "Edit", new { id = Model.PicklistId })</p>
+<p>@Html.ActionLink("Remove Picklist", "Delete", new { id = Model.PicklistId })</p>
+<p>@Html.ActionLink("Back to list", "Index")</p>
