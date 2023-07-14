@@ -1,0 +1,41 @@
+@{
+  Layout = "_Layout";
+}
+
+@using WarehouseProject.Models
+@model WarehouseProject.Models.Warehouse
+
+<h2>Warehouse Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.WarehouseName): @Html.DisplayFor(model => model.WarehouseName)</h3>
+<h3>@Html.DisplayNameFor(model => model.Address): @Html.DisplayFor(model => model.Address)</h3>
+<h3>@Html.DisplayNameFor(model => model.City): @Html.DisplayFor(model => model.City)</h3>
+<h3>@Html.DisplayNameFor(model => model.State): @Html.DisplayFor(model => model.State)</h3>
+<h3>@Html.DisplayNameFor(model => model.Zipcode): @Html.DisplayFor(model => model.Zipcode)</h3>
+<h3>@Html.DisplayNameFor(model => model.WHDescription): @Html.DisplayFor(model => model.WHDescription)</h3>
+
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This Warehouse has not been assigned any product</p>
+}
+else
+{
+  <h4>products in this warehouse</h4>
+  <ul>
+    @foreach(WarehouseProduct join in Model.JoinEntities)
+    {
+      <li>Products: @join.Product.ProductName</li>
+      @using (Html.BeginForm("DeleteJoin", "Warehouses"))
+      {
+        @Html.Hidden("joinId", @join.WarehouseProductId)
+        <input type="submit" value="Delete"/>
+      }
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Edit this Warehouse", "Edit", new { id = Model.WarehouseId })</p>
+<p>@Html.ActionLink("Add a product to this warehouse", "AddProduct", new { id = Model.WarehouseId })</p>
+<p>@Html.ActionLink("Delete Warehouse", "Delete", new { id = Model.WarehouseId })</p>

@@ -20,6 +20,7 @@ namespace WarehouseProject.Models
     public DateTime DateOrdered { get; set; }
     public DateTime DateReceived { get; set; }
     public DateTime DateShipped { get; set; }
-    public List<WarehouseProduct> JoinEtities { get; }
+    public List<WarehouseProduct> JoinEntities { get; }
+    public ApplicationUser User { get; set; }
   }
 }

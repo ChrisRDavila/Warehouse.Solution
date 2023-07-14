@@ -1,0 +1,25 @@
+@{
+  Layout = "_Layout";
+}
+
+@using WarehouseProject.Models;
+
+<h1>Products for @User.Identity.Name</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>No Products Added yet</h3>
+} 
+else
+{
+  <ul>
+    @foreach (Product product in Model)
+    {
+      <li>@Html.ActionLink($"{product.ProductName}", "Details", new { id = product.ProductId })</li>
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Add new product", "Create")</p>
+<p>@Html.ActionLink("See Warehouse List", "Index", "Warehouses")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

@@ -6,7 +6,7 @@
 
 <h4>Add a new warehouse</h4>
 
-<p>@Html.ValidationMessageFor(model => model.Warehouse, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+@* <p>@Html.ValidationMessageFor(model => model.Warehouse, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p> *@
 
 @using (Html.BeginForm())
 {
@@ -19,8 +19,8 @@
     @Html.LabelFor(model => model.City)
     @Html.TextBoxFor(model => model.City)
     <br />
-    @Html.LabelFor(model => model.Country)
-    @Html.TextBoxFor(model => model.Country)
+    @Html.LabelFor(model => model.State)
+    @Html.TextBoxFor(model => model.State)
     <br />
     @Html.LabelFor(model => model.Zipcode)
     @Html.TextBoxFor(model => model.Zipcode)

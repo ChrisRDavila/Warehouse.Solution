@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace WarehouseProject.Models
 {
-  public class WarehouseProjectContext : DbContext
+  public class WarehouseProjectContext : IdentityDbContext<ApplicationUser>
   {
     public DbSet<Warehouse> Warehouses { get; set; }
     public DbSet<Product> Products { get; set; }

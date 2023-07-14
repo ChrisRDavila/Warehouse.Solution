@@ -1,0 +1,46 @@
+@{
+  Layout = "_Layout";
+}
+
+@using WarehouseProject.Models
+@model WarehouseProject.Models.Product
+
+<h2>Product Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.ProductName): @Html.DisplayFor(model => model.ProductName)</h3>
+<h3>@Html.DisplayNameFor(model => model.ProductType): @Html.DisplayFor(model => model.ProductType)</h3>
+<h3>@Html.DisplayNameFor(model => model.ProductDescription): @Html.DisplayFor(model => model.ProductDescription)</h3>
+<h3>@Html.DisplayNameFor(model => model.Barcode): @Html.DisplayFor(model => model.Barcode)</h3>
+<h3>@Html.DisplayNameFor(model => model.Quantity): @Html.DisplayFor(model => model.Quantity)</h3>
+<h3>@Html.DisplayNameFor(model => model.Weight): @Html.DisplayFor(model => model.Weight)</h3>
+<h3>@Html.DisplayNameFor(model => model.Dimensions): @Html.DisplayFor(model => model.Dimensions)</h3>
+<h3>@Html.DisplayNameFor(model => model.DateOrdered): @Html.DisplayFor(model => model.DateOrdered)</h3>
+<h3>@Html.DisplayNameFor(model => model.DateReceived): @Html.DisplayFor(model => model.DateReceived)</h3>
+<h3>@Html.DisplayNameFor(model => model.DateShipped): @Html.DisplayFor(model => model.DateShipped)</h3>
+
+
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This product has not been assigned a warehouse</p>
+}
+else
+{
+  <h4>product details</h4>
+  <ul>
+    @foreach(WarehouseProduct join in Model.JoinEntities)
+    {
+      <li>Warehouse: @join.Warehouse.WarehouseName</li>
+      @using (Html.BeginForm("DeleteJoin", "Products"))
+      {
+        @Html.Hidden("joinId", @join.WarehouseProductId)
+        <input type="submit" value="Delete"/>
+      }
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
+<p>@Html.ActionLink("Edit this Product", "Edit", new { id = Model.ProductId })</p>
+<p>@Html.ActionLink("Add a warehouse to this product", "AddWarehouse", new { id = Model.ProductId })</p>
+<p>@Html.ActionLink("Delete Product", "Delete", new { id = Model.ProductId })</p>

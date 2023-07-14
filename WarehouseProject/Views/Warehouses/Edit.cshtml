@@ -1,0 +1,38 @@
+@{
+  Layout = "_Layout";
+}
+
+@model WarehouseProject.Models.Warehouse
+
+<h1>Edit warehouse</h1>
+<hr><br>
+
+<h4>Edit this warehouse: @Html.DisplayFor(model =>model.WarehouseName)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.WarehouseId)
+
+  @Html.LabelFor(model => model.WarehouseName)
+    @Html.EditorFor(model => model.WarehouseName)
+    <br />
+    @Html.LabelFor(model => model.Address)
+    @Html.EditorFor(model => model.Address)
+    <br />
+    @Html.LabelFor(model => model.City)
+    @Html.EditorFor(model => model.City)
+    <br />
+    @Html.LabelFor(model => model.State)
+    @Html.EditorFor(model => model.State)
+    <br />
+    @Html.LabelFor(model => model.Zipcode)
+    @Html.EditorFor(model => model.Zipcode)
+    <br />
+    @Html.LabelFor(model => model.WHDescription)
+    @Html.EditorFor(model => model.WHDescription)
+    <br />
+
+  <input type="submit" value="Save" class="btn btn-primary" />
+}
+
+<p>@Html.ActionLink("Back to warehouse list", "Index")</p>

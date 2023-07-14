@@ -1,0 +1,40 @@
+@{
+  Layout = "_Layout";
+}
+
+@model WarehouseProject.Models.Product
+
+<h2>Edit</h2>
+
+<h4>Edit this product: @Html.DisplayFor(model => model.ProductName)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.ProductId)
+
+  @Html.LabelFor(model => model.ProductName)
+    @Html.EditorFor(model => model.ProductName)
+    @Html.LabelFor(model => model.ProductType)
+    @Html.EditorFor(model => model.ProductType)
+    @Html.LabelFor(model => model.ProductDescription)
+    @Html.EditorFor(model => model.ProductDescription)
+    @Html.LabelFor(model => model.Barcode)
+    @Html.EditorFor(model => model.Barcode)
+    @Html.LabelFor(model => model.Quantity)
+    @Html.EditorFor(model => model.Quantity)
+    @Html.LabelFor(model => model.Weight)
+    @Html.EditorFor(model => model.Weight)
+    @Html.LabelFor(model => model.Dimensions)
+    @Html.EditorFor(model => model.Dimensions)
+    @Html.LabelFor(model => model.DateOrdered)
+    @Html.EditorFor(model => model.DateOrdered)
+    @Html.LabelFor(model => model.DateReceived)
+    @Html.EditorFor(model => model.DateReceived)
+    @Html.LabelFor(model => model.DateShipped)
+    @Html.EditorFor(model => model.DateShipped)
+
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
