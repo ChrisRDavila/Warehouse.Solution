@@ -4,16 +4,26 @@
 
 @model WarehouseProject.Models.Picklist
 
-<h2>Edit</h2>
+<h2>Update</h2>
 
-<h4>Edit this stylist: @Html.DisplayFor(model => model.StylistName)</h4>
+<h4>Edit this picklist: @Html.DisplayFor(model => model.OrderNumber)</h4>
 
 @using (Html.BeginForm())
 {
-  @Html.HiddenFor(model => model.StylistId)
+  @Html.HiddenFor(model => model.PicklistId)
 
-  @Html.LabelFor(model => model.StylistName)
-  @Html.EditorFor(model => model.StylistName)
+  @Html.LabelFor(model => model.OrderNumber)
+  @Html.EditorFor(model => model.OrderNumber)
+  @Html.LabelFor(model => model.OrderFor)
+  @Html.EditorFor(model => model.OrderFor)<br>
+  @Html.LabelFor(model => model.Fulfilled)
+  @Html.EditorFor(model => model.Fulfilled)<br>
+  @Html.LabelFor(model => model.Picker)
+  @Html.EditorFor(model => model.Picker)<br>
+  @Html.LabelFor(model => model.CreatedDate)
+  @Html.EditorFor(model => model.CreatedDate)<br>
+  @Html.LabelFor(model => model.DueDate)
+  @Html.EditorFor(model => model.DueDate)<br>
 
   <input type="submit" value="Save" />
 }
