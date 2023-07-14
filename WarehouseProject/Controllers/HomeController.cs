@@ -13,7 +13,7 @@ namespace WarehouseProject.Controllers
       private readonly WarehouseProjectContext _db;
       private readonly UserManager<ApplicationUser> _userManager;
 
-      public HomeController(UserManager<ApplicationUser> userManager, PierresTreatsContext db)
+      public HomeController(UserManager<ApplicationUser> userManager, WarehouseProjectContext db)
       {
         _userManager = userManager;
         _db = db;
