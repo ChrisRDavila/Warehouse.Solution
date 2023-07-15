@@ -29,29 +29,40 @@ namespace WarehouseProject.Controllers
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
       List<Product> userProducts = _db.Products
                           .Where(entry => entry.User.Id == currentUser.Id)
+                          .Include(product => product.Picklist)
                           .ToList();
       return View(userProducts);
     }
 
     public ActionResult Create()
     {
+      ViewBag.PicklistId = new SelectList(_db.Picklists, "PicklistId", "OrderNumber");
       return View();
     }
 
     [HttpPost]
     public async Task<ActionResult> Create(Product product)
     {
+      if (!ModelState.IsValid)
+      {
+        ViewBag.PicklistId = new SelectList(_db.Picklists, "PicklistId", "OrderNumber");
+        return View(product);
+      }
+      else
+      {
       string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
       product.User = currentUser;
       _db.Products.Add(product);
       _db.SaveChanges();
       return RedirectToAction("Index");
+      }
     }
 
     public ActionResult Details(int id)
     {
       Product thisProduct = _db.Products
+          .Include(product => product.Picklist)
           .Include(product => product.JoinEntities)
           .ThenInclude(join => join.Warehouse)
           .FirstOrDefault(product => product.ProductId == id);
@@ -61,6 +72,7 @@ namespace WarehouseProject.Controllers
     public ActionResult Edit(int id)
     {
       Product thisProduct = _db.Products.FirstOrDefault(product => product.ProductId == id);
+      ViewBag.PicklistId = new SelectList(_db.Picklists, "PicklistId", "OrderNumber");
       return View(thisProduct);
     }
 

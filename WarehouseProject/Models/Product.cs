@@ -20,8 +20,8 @@ namespace WarehouseProject.Models
     public DateTime DateOrdered { get; set; }
     public DateTime DateReceived { get; set; }
     public DateTime DateShipped { get; set; }
-    public int PicklistId { get; set; }//add to create and required
-    public Picklist Picklist { get; set; }//add to create
+    public int PicklistId { get; set; }// add required
+    public Picklist Picklist { get; set; }
     public List<WarehouseProduct> JoinEntities { get; }
     public ApplicationUser User { get; set; }
     public Boolean Picked { get; set; }

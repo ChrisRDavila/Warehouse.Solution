@@ -22,7 +22,9 @@ namespace WarehouseProject.Controllers
       [HttpGet("/")]
       public async Task<ActionResult> Index()
       {
+        Picklist[] pLists = _db.Picklists.ToArray();
         Dictionary<string,object[]> model = new Dictionary<string, object[]>();
+        model.Add("picklists", pLists);
         string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
         if (currentUser != null)
