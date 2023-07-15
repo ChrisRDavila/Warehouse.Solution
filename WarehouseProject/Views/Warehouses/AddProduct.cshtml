@@ -6,13 +6,13 @@
 
 <h2>Assign a Product to this warehouse</h2>
 
-<h4>Assign a warehouse for this product:<span style="color: red" > @Html.DisplayFor(model => model.WarehouseName)</span></h4>
+<h4>Add product for this warehouse:<span style="color: red" > @Html.DisplayFor(model => model.Building)</span></h4>
 
 @using (Html.BeginForm())
 {
     @Html.HiddenFor(model => model.WarehouseId)
 
-    @Html.Label("Select wproduct")
+    @Html.Label("Select product")
     @Html.DropDownList("ProductId")
 
     <input type="submit" value="Save" />

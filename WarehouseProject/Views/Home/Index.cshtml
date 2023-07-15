@@ -20,7 +20,7 @@
   <ul>
     @foreach (Product product in Model["products"])
     {
-      <li>@Html.ActionLink(@product.ProductDescription, "Details", "Products", new { id = @product.ProductId})</li>
+      <li>@Html.ActionLink(@product.Name, "Details", "Products", new { id = @product.ProductId})</li>
     }
   </ul>
   <h4><span style="color: brown">Warehouses:</span></h4>
@@ -31,7 +31,7 @@
   <ul>
     @foreach (Warehouse warehouse in Model["warehouses"])
     {
-      <li>@Html.ActionLink(@warehouse.WarehouseName, "Details", "Warehouses", new { id = @warehouse.WarehouseId})</li>
+      <li>@Html.ActionLink(@warehouse.Building, "Details", "Warehouses", new { id = @warehouse.WarehouseId})</li>
     }
   </ul>
 }

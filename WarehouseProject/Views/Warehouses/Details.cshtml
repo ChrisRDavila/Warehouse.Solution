@@ -7,12 +7,12 @@
 
 <h2>Warehouse Details</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.WarehouseName): @Html.DisplayFor(model => model.WarehouseName)</h3>
+<h3>@Html.DisplayNameFor(model => model.Building): @Html.DisplayFor(model => model.Building)</h3>
 <h3>@Html.DisplayNameFor(model => model.Address): @Html.DisplayFor(model => model.Address)</h3>
 <h3>@Html.DisplayNameFor(model => model.City): @Html.DisplayFor(model => model.City)</h3>
 <h3>@Html.DisplayNameFor(model => model.State): @Html.DisplayFor(model => model.State)</h3>
 <h3>@Html.DisplayNameFor(model => model.Zipcode): @Html.DisplayFor(model => model.Zipcode)</h3>
-<h3>@Html.DisplayNameFor(model => model.WHDescription): @Html.DisplayFor(model => model.WHDescription)</h3>
+<h3>@Html.DisplayNameFor(model => model.Notes): @Html.DisplayFor(model => model.Notes)</h3>
 
 
 @if(@Model.JoinEntities.Count == 0)
@@ -25,7 +25,7 @@ else
   <ul>
     @foreach(WarehouseProduct join in Model.JoinEntities)
     {
-      <li>Products: @join.Product.ProductName</li>
+      <li>Products: @join.Product.Name</li>
       @using (Html.BeginForm("DeleteJoin", "Warehouses"))
       {
         @Html.Hidden("joinId", @join.WarehouseProductId)

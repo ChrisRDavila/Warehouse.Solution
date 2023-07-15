@@ -6,18 +6,18 @@
 
 <h2>Edit</h2>
 
-<h4>Edit this product: @Html.DisplayFor(model => model.ProductName)</h4>
+<h4>Edit this product: @Html.DisplayFor(model => model.Name)</h4>
 
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.ProductId)
 
-  @Html.LabelFor(model => model.ProductName)
-    @Html.EditorFor(model => model.ProductName)
-    @Html.LabelFor(model => model.ProductType)
-    @Html.EditorFor(model => model.ProductType)
-    @Html.LabelFor(model => model.ProductDescription)
-    @Html.EditorFor(model => model.ProductDescription)
+  @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+    @Html.LabelFor(model => model.Type)
+    @Html.EditorFor(model => model.Type)
+    @Html.LabelFor(model => model.Description)
+    @Html.EditorFor(model => model.Description)
     @Html.LabelFor(model => model.Barcode)
     @Html.EditorFor(model => model.Barcode)
     @Html.LabelFor(model => model.Quantity)

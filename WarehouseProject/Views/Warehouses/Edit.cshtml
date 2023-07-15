@@ -7,14 +7,14 @@
 <h1>Edit warehouse</h1>
 <hr><br>
 
-<h4>Edit this warehouse: @Html.DisplayFor(model =>model.WarehouseName)</h4>
+<h4>Edit this warehouse: @Html.DisplayFor(model =>model.Building)</h4>
 
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.WarehouseId)
 
-  @Html.LabelFor(model => model.WarehouseName)
-    @Html.EditorFor(model => model.WarehouseName)
+  @Html.LabelFor(model => model.Building)
+    @Html.EditorFor(model => model.Building)
     <br />
     @Html.LabelFor(model => model.Address)
     @Html.EditorFor(model => model.Address)
@@ -28,8 +28,8 @@
     @Html.LabelFor(model => model.Zipcode)
     @Html.EditorFor(model => model.Zipcode)
     <br />
-    @Html.LabelFor(model => model.WHDescription)
-    @Html.EditorFor(model => model.WHDescription)
+    @Html.LabelFor(model => model.Notes)
+    @Html.EditorFor(model => model.Notes)
     <br />
 
   <input type="submit" value="Save" class="btn btn-primary" />

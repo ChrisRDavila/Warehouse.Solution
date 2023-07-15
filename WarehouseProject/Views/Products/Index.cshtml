@@ -15,7 +15,7 @@ else
   <ul>
     @foreach (Product product in Model)
     {
-      <li>@Html.ActionLink($"{product.ProductName}", "Details", new { id = product.ProductId })</li>
+      <li>@Html.ActionLink($"{product.Name}", "Details", new { id = product.ProductId })</li>
     }
   </ul>
 }

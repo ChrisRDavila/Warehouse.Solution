@@ -6,16 +6,19 @@
 
 <h4>Add a new product</h4>
 
-<p>@Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Barcode, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
 
 @using (Html.BeginForm())
 {
-    @Html.LabelFor(model => model.ProductName)
-    @Html.TextBoxFor(model => model.ProductName)
-    @Html.LabelFor(model => model.ProductType)
-    @Html.TextBoxFor(model => model.ProductType)
-    @Html.LabelFor(model => model.ProductDescription)
-    @Html.TextBoxFor(model => model.ProductDescription)
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
+    @Html.LabelFor(model => model.Type)
+    @Html.TextBoxFor(model => model.Type)
+    @Html.LabelFor(model => model.Description)
+    @Html.TextBoxFor(model => model.Description)
     @Html.LabelFor(model => model.Barcode)
     @Html.TextBoxFor(model => model.Barcode)
     @Html.LabelFor(model => model.Quantity)

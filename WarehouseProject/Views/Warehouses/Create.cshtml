@@ -6,12 +6,17 @@
 
 <h4>Add a new warehouse</h4>
 
-@* <p>@Html.ValidationMessageFor(model => model.Warehouse, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p> *@
+<p>@Html.ValidationMessageFor(model => model.Building, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.City, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Zipcode, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
 
 @using (Html.BeginForm())
 {
-    @Html.LabelFor(model => model.WarehouseName)
-    @Html.TextBoxFor(model => model.WarehouseName)
+    @Html.LabelFor(model => model.Building)
+    @Html.TextBoxFor(model => model.Building)
     <br />
     @Html.LabelFor(model => model.Address)
     @Html.TextBoxFor(model => model.Address)
@@ -25,8 +30,8 @@
     @Html.LabelFor(model => model.Zipcode)
     @Html.TextBoxFor(model => model.Zipcode)
     <br />
-    @Html.LabelFor(model => model.WHDescription)
-    @Html.TextBoxFor(model => model.WHDescription)
+    @Html.LabelFor(model => model.Notes)
+    @Html.TextBoxFor(model => model.Notes)
     <br />
 
 
