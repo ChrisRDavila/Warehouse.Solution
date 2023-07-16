@@ -37,6 +37,10 @@ namespace WarehouseProject.Controllers
                       .Where(entry => entry.User.Id == currentUser.Id)
                       .ToArray();
           model.Add("warehouses", warehouses);
+          // Picklist[] picklists = _db.Picklists
+          //             .Where(entry => entry.User.Id == currentUser.Id)
+          //             .ToArray();
+
         }
         return View(model);
       }

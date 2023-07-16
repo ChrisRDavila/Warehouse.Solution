@@ -20,9 +20,9 @@
   <p>No picklists have been added yet!</p>
 } 
 <ul>
-  @foreach (Picklist picklist in Model["picklists"])
+  @foreach (Picklist pic in Model["picklists"])
   {
-    <li>@Html.ActionLink(@picklist.OrderNumber, "Details", "Picklists", new { id = @picklist.PicklistId})</li>
+    <li>@Html.ActionLink(@pic.OrderNumber, "Details", "Picklists", new { id = @pic.PicklistId})</li>
   }
 </ul>
 <h4><span style="color: brown">Products:</span></h4>

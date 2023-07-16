@@ -37,7 +37,7 @@ namespace WarehouseProject.Controllers
     public ActionResult Details(int id)
     {
       Picklist thisPicklist = _db.Picklists
-                                  .Include(picklist => picklist.Products)
+                                  .Include(pic => pic.Products)
                                   .FirstOrDefault(picklist => picklist.PicklistId == id);
       return View(thisPicklist);
     }
