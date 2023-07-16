@@ -60,7 +60,7 @@ namespace WarehouseProject.Controllers
 
     public ActionResult Edit(int id)
     {
-      Warehouse thisWarehouse = _db.Warehouses.FirstOrDefault(warehouse => warehouse.WarehouseId == id);
+      Warehouse thisWarehouse = _db.Warehouses.FirstOrDefault(warehouses => warehouses.WarehouseId == id);
       return View(thisWarehouse);
     }
 
@@ -86,10 +86,10 @@ namespace WarehouseProject.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-    public ActionResult AddFlavor(int id)
+    public ActionResult AddProduct(int id)
     {
       Warehouse thisWarehouse = _db.Warehouses.FirstOrDefault(warehouses => warehouses.WarehouseId == id);
-      ViewBag.ProductId = new SelectList(_db.Products, "ProductId", "ProductName");
+      ViewBag.ProductId = new SelectList(_db.Products, "ProductId", "Name");
       return View(thisWarehouse);
     }
 
