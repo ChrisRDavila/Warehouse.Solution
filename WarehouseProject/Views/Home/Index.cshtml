@@ -12,8 +12,23 @@
 {
   <h4>Hello <span style="color:rgb(63, 94, 88)">@User.Identity.Name! </span></h4>
   <h4>here are your  entries so far:</h4>
-  <h4><span style="color: brown">Products:</span></h4>
+  
+
+<h4><span style="color: brown">Picklists:</span></h4>
+@if (Model["picklists"].Length == 0)
+{
+  <p>No picklists have been added yet!</p>
+} 
+<ul>
+  @foreach (Picklist pList in Model["picklists"])
+  {
+    <li>@Html.ActionLink(@pList.OrderNumber, "Details", "Picklists", new { id = @pList.PicklistId})</li>
+  }
+</ul>
+<h4><span style="color: brown">Products:</span></h4>
   @if (Model["products"].Length == 0)
+
+
   {
     <p>No Products have been added yet!</p>
   } 
@@ -42,6 +57,7 @@ else
 
 <hr>
 
+<p>@Html.ActionLink("Manage picklists", "Index", "Picklists")</p> 
 <p>@Html.ActionLink("Manage products", "Index", "Products")</p> 
 <p>@Html.ActionLink("Manage warehouses", "Index", "Warehouses")</p>
 <p>@Html.ActionLink("Create or manage an account", "Index", "Account")</p>
