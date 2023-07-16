@@ -12,12 +12,12 @@ using System.Security.Claims;
 namespace WarehouseProject.Controllers
 {
   [Authorize] 
-  public class WarehouseController : Controller
+  public class WarehousesController : Controller
   {
     private readonly WarehouseProjectContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public WarehouseController(UserManager<ApplicationUser> userManager, WarehouseProjectContext db)
+    public WarehousesController(UserManager<ApplicationUser> userManager, WarehouseProjectContext db)
     {
       _userManager = userManager;
       _db = db;
