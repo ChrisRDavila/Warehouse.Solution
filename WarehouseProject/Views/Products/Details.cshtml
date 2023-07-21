@@ -18,7 +18,7 @@
 
 
 
-@if(@Model.JoinEntities.Count == 0)
+@if(@Model.JoinWarehouseProduct.Count == 0)
 {
   <p>This product has not been assigned a warehouse</p>
 }
@@ -26,7 +26,7 @@ else
 {
   <h4>product details</h4>
   <ul>
-    @foreach(WarehouseProduct join in Model.JoinEntities)
+    @foreach(WarehouseProduct join in Model.JoinWarehouseProduct)
     {
       <li>Warehouse: @join.Warehouse.Building</li>
       @using (Html.BeginForm("DeleteJoin", "Products"))
@@ -38,7 +38,28 @@ else
   </ul>
 }
 
+@if(@Model.JoinPicklistProduct.Count == 0)
+{
+  <p>This product has not been assigned a picklist</p>
+}
+else
+{
+  <h4>product details</h4>
+  <ul>
+    @foreach(PicklistProduct join in Model.JoinPicklistProduct)
+    {
+      <li>Picklist: @join.Picklist.OrderNumber</li>
+      @using (Html.BeginForm("DeleteJoin", "Products"))
+      {
+        @Html.Hidden("joinId", @join.PicklistProductId)
+        <input type="submit" value="Delete"/>
+      }
+    }
+  </ul>
+}
+
 <p>@Html.ActionLink("Back to list", "Index")</p>
 <p>@Html.ActionLink("Edit this Product", "Edit", new { id = Model.ProductId })</p>
 <p>@Html.ActionLink("Add a warehouse to this product", "AddWarehouse", new { id = Model.ProductId })</p>
+<p>@Html.ActionLink("Add a picklist to this product", "AddPicklist", new { id = Model.ProductId })</p>
 <p>@Html.ActionLink("Delete Product", "Delete", new { id = Model.ProductId })</p>

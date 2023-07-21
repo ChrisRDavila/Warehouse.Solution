@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model WarehouseProject.Models.Picklist
+
+<h2>Assign a Product to this picklist</h2>
+
+<h4>Add product for this picklist:<span style="color: red" > @Html.DisplayFor(model => model.OrderNumber)</span></h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.PicklistId)
+
+    @Html.Label("Select product")
+    @Html.DropDownList("ProductId")
+
+    <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>

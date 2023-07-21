@@ -9,24 +9,27 @@
 <hr />
 <h3>@Html.DisplayNameFor(model => model.OrderNumber): @Html.DisplayFor(model => model.OrderNumber)<h3>
 <h3>@Html.DisplayNameFor(model => model.OrderFor): @Html.DisplayFor(model => model.OrderFor)</h3>
-<h3>@Html.DisplayFor(model => model.Fulfilled): @Html.DisplayFor(model => model.Fulfilled)</h3>
-<h3>@Html.DisplayNameFor(model => model.CreatedDate): @Html.DisplayFor(model => model.CreatedDate)</h3>
-<h3>@Html.DisplayNameFor(model => model.DueDate): @Html.DisplayFor(model => model.DueDate)</h3>
-<h3>@Html.DisplayNameFor(model => model.DateOrdered): @Html.DisplayFor(model => model.DateOrdered)</h3>
-<h3>@Html.DisplayNameFor(model => model.DateReceived): @Html.DisplayFor(model => model.DateReceived)</h3>
-<h3>@Html.DisplayNameFor(model => model.DateShipped): @Html.DisplayFor(model => model.DateShipped)</h3>
+<h3>@Html.DisplayFor(model => model.Priority): @Html.DisplayFor(model => model.Priority)</h3>
+<h3>@Html.DisplayNameFor(model => model.Carrier): @Html.DisplayFor(model => model.Carrier)</h3>
+<h3>@Html.DisplayNameFor(model => model.OrderDate): @Html.DisplayFor(model => model.OrderDate)</h3>
+<h3>@Html.DisplayNameFor(model => model.ShipBy): @Html.DisplayFor(model => model.ShipBy)</h3>
   
-@if (@Model.Products.Count == 0)
+@if (@Model.JoinPicklistProduct.Count == 0)
 {
   <h3>No products have been added to this picklist yet!</h3>
 } 
 else
 {
-  <h3>Products:</h3>
+  <h4>picklist details</h4>
   <ul>
-    @foreach (Product product in Model.Products)
+    @foreach(PicklistProduct join in Model.JoinPicklistProduct)
     {
-      <li>@Html.ActionLink($"{product.Name}", "Details", "Products", new { id = product.ProductId })</li>
+      <li>Product: @join.Product.Name</li>
+      @using (Html.BeginForm("DeleteJoin", "Picklists"))
+      {
+        @Html.Hidden("joinId", @join.PicklistProductId)
+        <input type="submit" value="Delete"/>
+      }
     }
   </ul>
 }
