@@ -28,7 +28,11 @@
     @Html.LabelFor(model => model.Dimensions)
     @Html.TextBoxFor(model => model.Dimensions)
     @Html.LabelFor(model => model.Picked, "Status")
-  @Html.EditorFor(model => model.Picked)
+    @Html.EditorFor(model => model.Picked)
+    @Html.LabelFor(model => model.Bin)
+    @Html.TextBoxFor(model => model.Bin)
+    
+
 
     <input type="submit" value="Add new product" class="btn btn-default" />
 }

@@ -12,10 +12,11 @@
 <h3>@Html.DisplayNameFor(model => model.City): @Html.DisplayFor(model => model.City)</h3>
 <h3>@Html.DisplayNameFor(model => model.State): @Html.DisplayFor(model => model.State)</h3>
 <h3>@Html.DisplayNameFor(model => model.Zipcode): @Html.DisplayFor(model => model.Zipcode)</h3>
+<h3>@Html.DisplayNameFor(model => model.ShipUnits): @Html.DisplayFor(model => model.ShipUnits)</h3>
 <h3>@Html.DisplayNameFor(model => model.Notes): @Html.DisplayFor(model => model.Notes)</h3>
 
 
-@if(@Model.JoinEntities.Count == 0)
+@if(@Model.JoinWarehouseProduct.Count == 0)
 {
   <p>This Warehouse has not been assigned any product</p>
 }
@@ -23,7 +24,7 @@ else
 {
   <h4>products in this warehouse</h4>
   <ul>
-    @foreach(WarehouseProduct join in Model.JoinEntities)
+    @foreach(WarehouseProduct join in Model.JoinWarehouseProduct)
     {
       <li>Products: @join.Product.Name</li>
       @using (Html.BeginForm("DeleteJoin", "Warehouses"))
