@@ -23,15 +23,11 @@ namespace WarehouseProject.Models
     
     // [Required(ErrorMessage = "Please enter a dimension for lxwxh in inches for the product.")]
     public string Dimensions { get; set; }
-    // public int VendorId { get; set; }
-    // public int WarehouseId { get; set; }
-    public DateTime DateOrdered { get; set; }
-    public DateTime DateReceived { get; set; }
-    public DateTime DateShipped { get; set; }
     public int PicklistId { get; set; }
     public Picklist Picklist { get; set; }
     public List<WarehouseProduct> JoinEntities { get; }
     public ApplicationUser User { get; set; }
     public Boolean Picked { get; set; }
+    //bin location
   }
 }

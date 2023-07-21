@@ -12,11 +12,14 @@ namespace WarehouseProject.Models
     [Required(ErrorMessage = "Please enter a name for the order.")]
     public string OrderFor { get; set; }
     public Boolean Fulfilled { get; set; }
-    public string Picker { get; set; }
     public DateTime CreatedDate { get; set; }
     public DateTime DueDate { get; set; }
     public List<Product> Products { get; set; }
     public ApplicationUser User { get; set; }
+    public string Carrier { get; set; }
+    public DateTime DateOrdered { get; set; }
+    public DateTime DateReceived { get; set; }
+    public DateTime DateShipped { get; set; }
 
   }
 }
