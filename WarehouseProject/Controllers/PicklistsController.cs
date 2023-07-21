@@ -6,11 +6,11 @@ using System.Linq;
 
 namespace WarehouseProject.Controllers
 {
-  public class PicklistController : Controller
+  public class PicklistsController : Controller
   {
     private readonly WarehouseProjectContext _db;
 
-    public PicklistController(WarehouseProjectContext db)
+    public PicklistsController(WarehouseProjectContext db)
     {
       _db = db;
     }
