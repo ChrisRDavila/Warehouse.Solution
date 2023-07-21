@@ -18,12 +18,16 @@
   @Html.TextBoxFor(model => model.OrderFor)<br>
   @Html.LabelFor(model => model.Fulfilled)
   @Html.EditorFor(model => model.Fulfilled)<br>
-  @Html.LabelFor(model => model.Picker)
-  @Html.TextBoxFor(model => model.Picker)<br>
   @Html.LabelFor(model => model.CreatedDate)
   @Html.EditorFor(model => model.CreatedDate)<br>
   @Html.LabelFor(model => model.DueDate)
   @Html.EditorFor(model => model.DueDate)<br>
+  @Html.LabelFor(model => model.DateOrdered)
+  @Html.EditorFor(model => model.DateOrdered)
+  @Html.LabelFor(model => model.DateReceived)
+  @Html.EditorFor(model => model.DateReceived)
+  @Html.LabelFor(model => model.DateShipped)
+  @Html.EditorFor(model => model.DateShipped)
   <input type="submit" value="Add new picklist" />
 }
 </div>

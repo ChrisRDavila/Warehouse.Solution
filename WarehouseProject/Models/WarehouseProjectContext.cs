@@ -9,6 +9,7 @@ namespace WarehouseProject.Models
     public DbSet<Product> Products { get; set; }
     public DbSet<Picklist> Picklists { get; set; }  
     public DbSet<WarehouseProduct> WarehouseProducts { get; set; }
+    public DbSet<PicklistProduct> PicklistProducts { get; set; }
 
     public WarehouseProjectContext(DbContextOptions options) : base(options) { }
   }
