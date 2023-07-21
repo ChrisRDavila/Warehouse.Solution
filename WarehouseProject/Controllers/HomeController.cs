@@ -22,9 +22,7 @@ namespace WarehouseProject.Controllers
       [HttpGet("/")]
       public async Task<ActionResult> Index()
       {
-        Picklist[] picklists = _db.Picklists.ToArray();
         Dictionary<string,object[]> model = new Dictionary<string, object[]>();
-        model.Add("picklists", picklists);
         string userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
         ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
         if (currentUser != null)
@@ -37,9 +35,9 @@ namespace WarehouseProject.Controllers
                       .Where(entry => entry.User.Id == currentUser.Id)
                       .ToArray();
           model.Add("warehouses", warehouses);
-          // Picklist[] picklists = _db.Picklists
-          //             .Where(entry => entry.User.Id == currentUser.Id)
-          //             .ToArray();
+          Picklist[] picklists = _db.Picklists
+                      .Where(entry => entry.User.Id == currentUser.Id)
+                      .ToArray();
 
         }
         return View(model);

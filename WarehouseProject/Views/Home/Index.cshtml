@@ -15,16 +15,18 @@
   
 
 <h4><span style="color: brown">Picklists:</span></h4>
-@if (Model["picklists"].Length == 0)
-{
-  <p>No picklists have been added yet!</p>
-} 
-<ul>
-  @foreach (Picklist pic in Model["picklists"])
+  @if (Model["picklists"].Length == 0)
+
+
   {
-    <li>@Html.ActionLink(@pic.OrderNumber, "Details", "Picklists", new { id = @pic.PicklistId})</li>
-  }
-</ul>
+    <p>No Picklists have been added yet!</p>
+  } 
+  <ul>
+    @foreach (Picklist picklist in Model["picklists"])
+    {
+      <li>@Html.ActionLink(@picklist.OrderNumber, "Details", "Products", new { id = @picklist.PicklistId})</li>
+    }
+  </ul>
 <h4><span style="color: brown">Products:</span></h4>
   @if (Model["products"].Length == 0)
 
