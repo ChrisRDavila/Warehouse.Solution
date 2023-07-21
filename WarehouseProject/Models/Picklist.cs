@@ -14,12 +14,11 @@ namespace WarehouseProject.Models
     public Boolean Fulfilled { get; set; }
     public DateTime CreatedDate { get; set; }
     public DateTime DueDate { get; set; }
-    public List<Product> Products { get; set; }
-    public ApplicationUser User { get; set; }
     public string Carrier { get; set; }
     public DateTime DateOrdered { get; set; }
     public DateTime DateReceived { get; set; }
     public DateTime DateShipped { get; set; }
+    public ApplicationUser User { get; set; }
 
   }
 }
