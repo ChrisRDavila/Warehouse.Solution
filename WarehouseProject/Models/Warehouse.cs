@@ -21,6 +21,6 @@ namespace WarehouseProject.Models
     public string Notes { get; set; }
     public List<WarehouseProduct> JoinEntities { get; }
     public ApplicationUser User { get; set; }
-    //bins 
+    
   }
 }
