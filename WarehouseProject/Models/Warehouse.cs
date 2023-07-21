@@ -19,7 +19,8 @@ namespace WarehouseProject.Models
     public int Zipcode { get; set; }
     public string ShipUnits { get; set; }
     public string Notes { get; set; }
-    public List<WarehouseProduct> JoinEntities { get; }
+    public string Bin { get; set; }
+    public List<WarehouseProduct> JoinWarehouseProduct { get; }
     public ApplicationUser User { get; set; }
     
   }
