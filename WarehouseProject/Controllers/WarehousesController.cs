@@ -52,7 +52,7 @@ namespace WarehouseProject.Controllers
     public ActionResult Details(int id)
     {
       Warehouse thisWarehouse = _db.Warehouses
-          .Include(warehouse => warehouse.JoinEntities)
+          .Include(warehouse => warehouse.JoinWarehouseProduct)
           .ThenInclude(join => join.Product)
           .FirstOrDefault(warehouse => warehouse.WarehouseId == id);
       return View(thisWarehouse);
