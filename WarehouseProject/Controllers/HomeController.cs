@@ -38,6 +38,7 @@ namespace WarehouseProject.Controllers
           Picklist[] picklists = _db.Picklists
                       .Where(entry => entry.User.Id == currentUser.Id)
                       .ToArray();
+          model.Add("picklists", picklists);
 
         }
         return View(model);
