@@ -24,7 +24,7 @@
   <ul>
     @foreach (Picklist picklist in Model["picklists"])
     {
-      <li>@Html.ActionLink(@picklist.OrderNumber, "Details", "Products", new { id = @picklist.PicklistId})</li>
+      <li>@Html.ActionLink(@picklist.OrderNumber, "Details", "Picklists", new { id = @picklist.PicklistId})</li>
     }
   </ul>
 <h4><span style="color: brown">Products:</span></h4>
