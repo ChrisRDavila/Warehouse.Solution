@@ -42,6 +42,8 @@
 
 [jQuery for beginners](https://www.youtube.com/watch?v=ScoURsEM_yU&themeRefresh=1)
 
+[Inentory Management EF Core](https://www.youtube.com/watch?v=bQ2oGF6fUVM)
+
 
 ## Known Bugs
 

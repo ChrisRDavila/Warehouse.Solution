@@ -89,9 +89,9 @@ namespace WarehouseProject.Controllers
 
     public ActionResult AddProduct(int id)
     {
-      Warehouse thisWarehouse = _db.Warehouses.FirstOrDefault(warehouses => warehouses.WarehouseId == id);
+      Picklist thisPicklist = _db.Picklists.FirstOrDefault(picklists => picklists.PicklistId == id);
       ViewBag.ProductId = new SelectList(_db.Products, "ProductId", "Name");
-      return View(thisWarehouse);
+      return View(thisPicklist);
     }
 
     [HttpPost]
