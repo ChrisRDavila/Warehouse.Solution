@@ -2,15 +2,15 @@
   Layout = "_Layout";
 }
 
-@model WarehouseProject.Models.Product
+@model WarehouseProject.Models.ProductType
 
 <h2>Assign Picklist</h2>
 
-<h4>Assign a picklist for this product:<span style="color: red" > @Html.DisplayFor(model => model.Name)</span></h4>
+<h4>Assign a picklist for this product type:<span style="color: red" > @Html.DisplayFor(model => model.Name)</span></h4>
 
 @using (Html.BeginForm())
 {
-    @Html.HiddenFor(model => model.ProductId)
+    @Html.HiddenFor(model => model.ProductTypeId)
 
     @Html.Label("Select picklist")
     @Html.DropDownList("PicklistId")

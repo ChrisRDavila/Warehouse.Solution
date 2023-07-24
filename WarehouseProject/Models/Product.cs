@@ -13,6 +13,7 @@ namespace WarehouseProject.Models
     public string Description { get; set; }
     [Required(ErrorMessage = "Please enter a barcode for the product.")]
     public string Barcode { get; set; }
+    public DateTime DateReceived { get; set; }
     public ApplicationUser User { get; set; }
     public Boolean Picked { get; set; }
     public string Bin { get; set; }

@@ -14,20 +14,20 @@
 <h3>@Html.DisplayNameFor(model => model.OrderDate): @Html.DisplayFor(model => model.OrderDate)</h3>
 <h3>@Html.DisplayNameFor(model => model.ShipBy): @Html.DisplayFor(model => model.ShipBy)</h3>
   
-@if (@Model.JoinPicklistProduct.Count == 0)
+@if (@Model.JoinPicklistProductType.Count == 0)
 {
-  <h3>No products have been added to this picklist yet!</h3>
+  <h3>No product types have been added to this picklist yet!</h3>
 } 
 else
 {
   <h4>picklist details</h4>
   <ul>
-    @foreach(PicklistProduct join in Model.JoinPicklistProduct)
+    @foreach(PicklistProductType join in Model.JoinPicklistProductType)
     {
-      <li>Product: @join.Product.Name</li>
+      <li>Product Type: @join.ProductType.Name</li>
       @using (Html.BeginForm("DeleteJoin", "Picklists"))
       {
-        @Html.Hidden("joinId", @join.PicklistProductId)
+        @Html.Hidden("joinId", @join.PicklistProductTypeId)
         <input type="submit" value="Delete"/>
       }
     }
@@ -36,5 +36,5 @@ else
 
 <p>@Html.ActionLink("Update Picklist", "Edit", new { id = Model.PicklistId })</p>
 <p>@Html.ActionLink("Remove Picklist", "Delete", new { id = Model.PicklistId })</p>
-<p>@Html.ActionLink("Add a Product to this Picklist", "AddProduct", new { id = Model.PicklistId })</p>
+<p>@Html.ActionLink("Add a Product Type to this Picklist", "AddProductType", new { id = Model.PicklistId })</p>
 <p>@Html.ActionLink("Back to list", "Index")</p>

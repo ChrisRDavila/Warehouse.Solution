@@ -52,8 +52,8 @@ namespace WarehouseProject.Controllers
     public ActionResult Details(int id)
     {
       Warehouse thisWarehouse = _db.Warehouses
-          .Include(warehouse => warehouse.JoinWarehouseProduct)
-          .ThenInclude(join => join.Product)
+          .Include(warehouse => warehouse.JoinWarehouseProductType)
+          .ThenInclude(join => join.ProductType)
           .FirstOrDefault(warehouse => warehouse.WarehouseId == id);
       return View(thisWarehouse);
     }
@@ -86,22 +86,22 @@ namespace WarehouseProject.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-    public ActionResult AddProduct(int id)
+    public ActionResult AddProductType(int id)
     {
       Warehouse thisWarehouse = _db.Warehouses.FirstOrDefault(warehouses => warehouses.WarehouseId == id);
-      ViewBag.ProductId = new SelectList(_db.Products, "ProductId", "Name");
+      ViewBag.ProductTypeId = new SelectList(_db.ProductTypes, "ProductTypeId", "Name");
       return View(thisWarehouse);
     }
 
     [HttpPost]
-    public ActionResult AddProduct(Warehouse warehouse, int productId)
+    public ActionResult AddProductType(Warehouse warehouse, int productTypeId)
     {
       #nullable enable
-      WarehouseProduct? joinEntity = _db.WarehouseProducts.FirstOrDefault(join => (join.ProductId == productId && join.WarehouseId == warehouse.WarehouseId));
+      WarehouseProductType? joinEntity = _db.WarehouseProductTypes.FirstOrDefault(join => (join.ProductTypeId == productTypeId && join.WarehouseId == warehouse.WarehouseId));
       #nullable disable
-      if (joinEntity == null && productId != 0)
+      if (joinEntity == null && productTypeId != 0)
       {
-        _db.WarehouseProducts.Add(new WarehouseProduct() { ProductId = productId, WarehouseId = warehouse.WarehouseId });
+        _db.WarehouseProductTypes.Add(new WarehouseProductType() { ProductTypeId = productTypeId, WarehouseId = warehouse.WarehouseId });
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = warehouse.WarehouseId });
@@ -110,8 +110,8 @@ namespace WarehouseProject.Controllers
     [HttpPost]
     public ActionResult DeleteJoin(int joinId)
     {
-      WarehouseProduct joinEntry = _db.WarehouseProducts.FirstOrDefault(entry => entry.WarehouseProductId == joinId);
-      _db.WarehouseProducts.Remove(joinEntry);
+      WarehouseProductType joinEntry = _db.WarehouseProductTypes.FirstOrDefault(entry => entry.WarehouseProductTypeId == joinId);
+      _db.WarehouseProductTypes.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     } 

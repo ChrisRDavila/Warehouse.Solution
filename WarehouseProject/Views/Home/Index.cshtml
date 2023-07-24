@@ -27,17 +27,17 @@
       <li>@Html.ActionLink(@picklist.OrderNumber, "Details", "Picklists", new { id = @picklist.PicklistId})</li>
     }
   </ul>
-<h4><span style="color: brown">Products:</span></h4>
-  @if (Model["products"].Length == 0)
+<h4><span style="color: brown">Product Types:</span></h4>
+  @if (Model["productTypes"].Length == 0)
 
 
   {
-    <p>No Products have been added yet!</p>
+    <p>No Product Types have been added yet!</p>
   } 
   <ul>
-    @foreach (Product product in Model["products"])
+    @foreach (ProductType productType in Model["productTypes"])
     {
-      <li>@Html.ActionLink(@product.Name, "Details", "Products", new { id = @product.ProductId})</li>
+      <li>@Html.ActionLink(@productType.Name, "Details", "ProductTypes", new { id = @productType.ProductTypeId})</li>
     }
   </ul>
   <h4><span style="color: brown">Warehouses:</span></h4>
@@ -48,7 +48,7 @@
   <ul>
     @foreach (Warehouse warehouse in Model["warehouses"])
     {
-      <li>@Html.ActionLink(@warehouse.Building, "Details", "Warehouses", new { id = @warehouse.WarehouseId})</li>
+      <li>@Html.ActionLink(@warehouse.Branch, "Details", "Warehouses", new { id = @warehouse.WarehouseId})</li>
     }
   </ul>
 }
@@ -59,7 +59,7 @@ else
 
 <hr>
 
-<p>@Html.ActionLink("Manage products", "Index", "Products")</p>
+<p>@Html.ActionLink("Manage productTypes", "Index", "ProductTypes")</p>
 <p>@Html.ActionLink("Manage picklists", "Index", "Picklists")</p> 
 <p>@Html.ActionLink("Manage warehouses", "Index", "Warehouses")</p>
 <p>@Html.ActionLink("Create or manage an account", "Index", "Account")</p>

@@ -10,6 +10,7 @@ namespace WarehouseProject.Models
     public int ProductTypeId { get; set; }
     [Required(ErrorMessage = "Please enter a name for the product.")]
     public string Name { get; set; } 
+    public string Model { get; set;}
     public string Description { get; set; }
     public int Quantity { get; set; }
     // [Range(0, int.MaxValue, ErrorMessage = "You must add positive number in lbs to weight")]

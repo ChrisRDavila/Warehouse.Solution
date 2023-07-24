@@ -8,7 +8,7 @@ namespace WarehouseProject.Models
   {
     public int WarehouseId { get; set; }
     [Required(ErrorMessage = "Please enter a unique identifying name for this building.")]
-    public string Building { get; set; }
+    public string Branch { get; set; }
     [Required(ErrorMessage = "Please enter an address for the warehouse.")]
     public string Address { get; set; }
     [Required(ErrorMessage = "Please enter a city for the warehouse.")]
