@@ -27,10 +27,10 @@ namespace WarehouseProject.Controllers
         ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
         if (currentUser != null)
         {
-          Product[] products = _db.Products
+          ProductType[] productTypes = _db.ProductTypes
                       .Where(entry => entry.User.Id == currentUser.Id)
                       .ToArray();
-          model.Add("products", products);
+          model.Add("productTypes", productTypes);
           Warehouse[] warehouses = _db.Warehouses
                       .Where(entry => entry.User.Id == currentUser.Id)
                       .ToArray();

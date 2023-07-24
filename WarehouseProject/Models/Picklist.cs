@@ -16,7 +16,7 @@ namespace WarehouseProject.Models
     public string Carrier { get; set; }
     public DateTime OrderDate { get; set; }
     public DateTime ShipBy { get; set; }
-    public List<PicklistProduct> JoinPicklistProduct { get; set; }
+    public List<PicklistProductType> JoinPicklistProductType { get; set; }
     public ApplicationUser User { get; set; }
 
   }

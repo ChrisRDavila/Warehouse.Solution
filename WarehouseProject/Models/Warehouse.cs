@@ -20,7 +20,7 @@ namespace WarehouseProject.Models
     public string ShipUnits { get; set; }
     public string Notes { get; set; }
     public string Bin { get; set; }
-    public List<WarehouseProduct> JoinWarehouseProduct { get; }
+    public List<WarehouseProductType> JoinWarehouseProductType { get; }
     public ApplicationUser User { get; set; }
     
   }

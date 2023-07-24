@@ -52,8 +52,8 @@ namespace WarehouseProject.Controllers
     public ActionResult Details(int id)
     {
       Picklist thisPicklist = _db.Picklists
-                                  .Include(picklist => picklist.JoinPicklistProduct)
-          .ThenInclude(join => join.Product)
+                                  .Include(picklist => picklist.JoinPicklistProductType)
+          .ThenInclude(join => join.ProductType)
           .FirstOrDefault(picklist => picklist.PicklistId == id);
       return View(thisPicklist);
     }
@@ -87,22 +87,22 @@ namespace WarehouseProject.Controllers
       return RedirectToAction("Index");
     }
 
-    public ActionResult AddProduct(int id)
+    public ActionResult AddProductType(int id)
     {
       Picklist thisPicklist = _db.Picklists.FirstOrDefault(picklists => picklists.PicklistId == id);
-      ViewBag.ProductId = new SelectList(_db.Products, "ProductId", "Name");
+      ViewBag.ProductTypeId = new SelectList(_db.ProductTypes, "ProductTypeId", "Name");
       return View(thisPicklist);
     }
 
     [HttpPost]
-    public ActionResult AddProduct(Picklist picklist, int productId)
+    public ActionResult AddProductType(Picklist picklist, int productTypeId)
     {
       #nullable enable
-      PicklistProduct? joinEntity = _db.PicklistProducts.FirstOrDefault(join => (join.ProductId == productId && join.PicklistId == picklist.PicklistId));
+      PicklistProductType? joinEntity = _db.PicklistProductTypes.FirstOrDefault(join => (join.ProductTypeId == productTypeId && join.PicklistId == picklist.PicklistId));
       #nullable disable
-      if (joinEntity == null && productId != 0)
+      if (joinEntity == null && productTypeId != 0)
       {
-        _db.PicklistProducts.Add(new PicklistProduct() { ProductId = productId, PicklistId = picklist.PicklistId });
+        _db.PicklistProductTypes.Add(new PicklistProductType() { ProductTypeId = productTypeId, PicklistId = picklist.PicklistId });
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = picklist.PicklistId });
@@ -111,8 +111,8 @@ namespace WarehouseProject.Controllers
     [HttpPost]
     public ActionResult DeleteJoin(int joinId)
     {
-      PicklistProduct joinEntry = _db.PicklistProducts.FirstOrDefault(entry => entry.PicklistProductId == joinId);
-      _db.PicklistProducts.Remove(joinEntry);
+      PicklistProductType joinEntry = _db.PicklistProductTypes.FirstOrDefault(entry => entry.PicklistProductTypeId == joinId);
+      _db.PicklistProductTypes.Remove(joinEntry);
       _db.SaveChanges();
       return RedirectToAction("Index");
     } 

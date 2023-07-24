@@ -12,12 +12,12 @@ using System.Security.Claims;
 namespace WarehouseProject.Controllers
 {
   [Authorize] 
-  public class ProductsController : Controller
+  public class ProductTypesController : Controller
   {
     private readonly WarehouseProjectContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public ProductsController(UserManager<ApplicationUser> userManager, WarehouseProjectContext db)
+    public ProductTypesController(UserManager<ApplicationUser> userManager, WarehouseProjectContext db)
     {
       _userManager = userManager;
       _db = db;
@@ -27,10 +27,10 @@ namespace WarehouseProject.Controllers
     {
       string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-      List<Product> userProducts = _db.Products
+      List<ProductType> userProductTypes = _db.ProductTypes
                           .Where(entry => entry.User.Id == currentUser.Id)
                           .ToList();
-      return View(userProducts);
+      return View(userProductTypes);
     }
 
     public ActionResult Create()
@@ -39,12 +39,12 @@ namespace WarehouseProject.Controllers
     }
 
     [HttpPost]
-    public async Task<ActionResult> Create(Product product)
+    public async Task<ActionResult> Create(ProductType productType)
     {
       string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-      product.User = currentUser;
-      _db.Products.Add(product);
+      productType.User = currentUser;
+      _db.ProductTypes.Add(productType);
       _db.SaveChanges();
       return RedirectToAction("Index");
       
@@ -52,19 +52,19 @@ namespace WarehouseProject.Controllers
 
     public ActionResult Details(int id)
     {
-      Product thisProduct = _db.Products
-          .Include(product => product.JoinPicklistProduct)
+      ProductType thisProductType = _db.ProductTypes
+          .Include(productType => productType.JoinPicklistProductType)
           .ThenInclude(join => join.Picklist)
-          .Include(product => product.JoinWarehouseProduct)
+          .Include(productType => productType.JoinWarehouseProductType)
           .ThenInclude(join => join.Warehouse)
-          .FirstOrDefault(product => product.ProductId == id);
-      return View(thisProduct);
+          .FirstOrDefault(productType => productType.ProductTypeId == id);
+      return View(thisProductType);
     }
 
     public ActionResult Edit(int id)
     {
-      Product thisProduct = _db.Products.FirstOrDefault(product => product.ProductId == id);
-      return View(thisProduct);
+      ProductType thisProductType = _db.ProductTypes.FirstOrDefault(productType => productType.ProductTypeId == id);
+      return View(thisProductType);
     }
 
     [HttpPost]
