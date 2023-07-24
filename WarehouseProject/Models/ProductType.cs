@@ -14,6 +14,7 @@ namespace WarehouseProject.Models
     public string Description { get; set; }
     public int Quantity { get; set; }
     // [Range(0, int.MaxValue, ErrorMessage = "You must add positive number in lbs to weight")]
+    public int ShipUnit { get; set; }
     public decimal Weight { get; set; }
     
     // [Required(ErrorMessage = "Please enter a dimension for lxwxh in inches for the product.")]

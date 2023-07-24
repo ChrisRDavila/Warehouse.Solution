@@ -17,9 +17,7 @@ namespace WarehouseProject.Models
     public string State { get; set; }
     [Range(10000, 99999, ErrorMessage = "Please enter a valid zipcode.")]
     public int Zipcode { get; set; }
-    public string ShipUnits { get; set; }
     public string Notes { get; set; }
-    public string Bin { get; set; }
     public List<WarehouseProductType> JoinWarehouseProductType { get; }
     public ApplicationUser User { get; set; }
     

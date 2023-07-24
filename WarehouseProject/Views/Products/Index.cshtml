@@ -4,23 +4,23 @@
 
 @using WarehouseProject.Models;
 
-<h1>Products for @User.Identity.Name</h1>
+<h1>Product Types for @User.Identity.Name</h1>
 
 @if (@Model.Count == 0)
 {
-  <h3>No Products Added yet</h3>
+  <h3>No Product Types Added yet</h3>
 } 
 else
 {
   <ul>
-    @foreach (Product product in Model)
+    @foreach (ProductType productType in Model)
     {
-      <li>@Html.ActionLink($"{product.Name}", "Details", new { id = product.ProductId })</li>
+      <li>@Html.ActionLink($"{productType.Name}", "Details", new { id = productType.ProductTypeId })</li>
     }
   </ul>
 }
 
-<p>@Html.ActionLink("Add new product", "Create")</p>
+<p>@Html.ActionLink("Add new product type", "Create")</p>
 <p>@Html.ActionLink("See Warehouse List", "Index", "Warehouses")</p>
 <p>@Html.ActionLink("See Picklists", "Index", "Picklists")</p>
 <p>@Html.ActionLink("Home", "Index", "Home")</p>

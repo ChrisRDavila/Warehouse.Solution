@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+@model WarehouseProject.Models.Warehouse
+
+<h2>Assign a Product Type to this Warehouse</h2>
+
+<h4>Add Product Type for this Warehouse:<span style="color: red" > @Html.DisplayFor(model => model.Branch)</span></h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.WarehouseId)
+
+    @Html.Label("Select product type")
+    @Html.DropDownList("ProductTypeId")
+
+    <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
