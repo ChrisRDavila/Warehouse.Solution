@@ -19,13 +19,13 @@
     @Html.TextBoxFor(model => model.Model)<br>
     @Html.LabelFor(model => model.Description)
     @Html.TextBoxFor(model => model.Description)<br>
-    @Html.LabelFor(model => model.TotalQuantity)
+    @Html.LabelFor(model => model.TotalQuantity, "Total Quantity")
     @Html.TextBoxFor(model => model.TotalQuantity)<br>
-    @Html.LabelFor(model => model.ShipUnit)
+    @Html.LabelFor(model => model.ShipUnit, "Units per shipment")
     @Html.TextBoxFor(model => model.ShipUnit)<br>
-    @Html.LabelFor(model => model.Weight)
+    @Html.LabelFor(model => model.Weight, "Weight in lbs")
     @Html.TextBoxFor(model => model.Weight)<br>
-    @Html.LabelFor(model => model.Dimensions)
+    @Html.LabelFor(model => model.Dimensions, "LxWxH in inches")
     @Html.TextBoxFor(model => model.Dimensions)<br>
     @* @Html.LabelFor(model => model.Picked, "Status")
     @Html.EditorFor(model => model.Picked)<br>

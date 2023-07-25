@@ -12,18 +12,18 @@
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.Barcode)
-  @Html.TextBoxFor(model => model.Barcode)
+  @Html.TextBoxFor(model => model.Barcode)<br>
   @Html.LabelFor(model => model.Description)
-  @Html.TextBoxFor(model => model.Description)
+  @Html.TextBoxFor(model => model.Description)<br>
   @Html.LabelFor(model => model.DateReceived)
-  @Html.EditorFor(model => model.DateReceived)
+  @Html.EditorFor(model => model.DateReceived)<br>
   @* @Html.LabelFor(model => model.Picked)
   @Html.EditorFor(model => model.Picked)
   @Html.LabelFor(model => model.Bin)
   @Html.TextBoxFor(model => model.Bin) *@
 
   @Html.LabelFor(model => model.ProductType)
-  @Html.DropDownList("ProductTypeId")
+  @Html.DropDownList("ProductTypeId")<br>
 
   <input type="submit" value="Add new product" class="btn btn-default" />
 }
