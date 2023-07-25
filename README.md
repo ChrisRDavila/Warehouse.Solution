@@ -44,6 +44,8 @@
 
 [Inentory Management EF Core](https://www.youtube.com/watch?v=bQ2oGF6fUVM)
 
+[prisma.io](https://www.prisma.io/dataguide/mysql/reading-and-querying-data/joining-tables)
+
 
 ## Known Bugs
 
