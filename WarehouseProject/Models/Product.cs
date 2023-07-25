@@ -17,6 +17,6 @@ namespace WarehouseProject.Models
     public ApplicationUser User { get; set; }
     public Boolean Picked { get; set; }
     public string Bin { get; set; }
-    
+    //
   }
 }
