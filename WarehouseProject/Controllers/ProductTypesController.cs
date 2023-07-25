@@ -93,7 +93,7 @@ namespace WarehouseProject.Controllers
     public ActionResult AddWarehouse(int id)
     {
       ProductType thisProductType = _db.ProductTypes.FirstOrDefault(productTypes => productTypes.ProductTypeId == id);
-      ViewBag.WarehouseId = new SelectList(_db.Warehouses, "WarehouseId", "WarehouseName");
+      ViewBag.WarehouseId = new SelectList(_db.Warehouses, "WarehouseId", "Branch");
       return View(thisProductType);
     }
 
