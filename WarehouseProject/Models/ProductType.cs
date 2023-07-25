@@ -12,7 +12,7 @@ namespace WarehouseProject.Models
     public string Name { get; set; } 
     public string Model { get; set;}
     public string Description { get; set; }
-    public int Quantity { get; set; }
+    public int TotalQuantity { get; set; }
     // [Range(0, int.MaxValue, ErrorMessage = "You must add positive number in lbs to weight")]
     public int ShipUnit { get; set; }
     public decimal Weight { get; set; }

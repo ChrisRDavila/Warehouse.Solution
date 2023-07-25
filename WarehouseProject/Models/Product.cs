@@ -16,8 +16,8 @@ namespace WarehouseProject.Models
     public string Description { get; set; }
     public DateTime DateReceived { get; set; }
     public ApplicationUser User { get; set; }
-    public Boolean Picked { get; set; }
-    public string Bin { get; set; }
+    // public Boolean Picked { get; set; }
+    // public string Bin { get; set; }
     
   }
 }
