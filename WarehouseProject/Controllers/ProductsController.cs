@@ -12,12 +12,12 @@ using System.Security.Claims;
 namespace WarehouseProject.Controllers
 {
   [Authorize] 
-  public class ProductTypesController : Controller
+  public class ProductsController : Controller
   {
     private readonly WarehouseProjectContext _db;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public ProductTypesController(UserManager<ApplicationUser> userManager, WarehouseProjectContext db)
+    public ProductsController(UserManager<ApplicationUser> userManager, WarehouseProjectContext db)
     {
       _userManager = userManager;
       _db = db;
@@ -27,126 +27,74 @@ namespace WarehouseProject.Controllers
     {
       string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
       ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-      List<ProductType> userProductTypes = _db.ProductTypes
+      List<Product> userProducts = _db.Products
                           .Where(entry => entry.User.Id == currentUser.Id)
+                          .Include(product => product.ProductType)
                           .ToList();
-      return View(userProductTypes);
+      return View(userProducts);
     }
 
     public ActionResult Create()
     {
+      ViewBag.ProductTypeId = new SelectList(_db.ProductTypes, "ProductTypeId", "Name");
       return View();
     }
 
     [HttpPost]
-    public async Task<ActionResult> Create(ProductType productType)
+    public async Task<ActionResult> Create(Product product, int ProductTypeId)
     {
-      string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-      ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
-      productType.User = currentUser;
-      _db.ProductTypes.Add(productType);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
-      
+      if (!ModelState.IsValid)
+      {
+        ViewBag.ProductTypeId = new SelectList(_db.ProductTypes, "ProductTypeId", "Name");
+        return View(product);
+      }
+      else
+      {
+        string userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+        ApplicationUser currentUser = await _userManager.FindByIdAsync(userId);
+        product.User = currentUser;
+        _db.Products.Add(product);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+      }
     }
 
     public ActionResult Details(int id)
     {
-      ProductType thisProductType = _db.ProductTypes
-          .Include(productType => productType.JoinPicklistProductType)
-          .ThenInclude(join => join.Picklist)
-          .Include(productType => productType.JoinWarehouseProductType)
-          .ThenInclude(join => join.Warehouse)
-          .FirstOrDefault(productType => productType.ProductTypeId == id);
-      return View(thisProductType);
+      Product thisProduct = _db.Products
+          .Include(product => product.ProductType)
+          .FirstOrDefault(product => product.ProductId == id);
+      return View(thisProduct);
     }
 
     public ActionResult Edit(int id)
     {
-      ProductType thisProductType = _db.ProductTypes.FirstOrDefault(productType => productType.ProductTypeId == id);
-      return View(thisProductType);
+      Product thisProduct = _db.Products.FirstOrDefault(product => product.ProductId == id);
+      ViewBag.ProductTypeId = new SelectList(_db.ProductTypes, "ProductTypeId", "Name");
+      return View(thisProduct);
     }
 
     [HttpPost]
-    public ActionResult Edit(ProductType productType)
+    public ActionResult Edit(Product product)
     {
-      _db.ProductTypes.Update(productType);
+      _db.Products.Update(product);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
 
     public ActionResult Delete(int id)
     {
-      ProductType thisProductType = _db.ProductTypes.FirstOrDefault(productType => productType.ProductTypeId == id);
-      return View(thisProductType);
+      Product thisProduct = _db.Products.FirstOrDefault(product => product.ProductId == id);
+      return View(thisProduct);
     }
 
     [HttpPost, ActionName("Delete")]
     public ActionResult DeleteConfirmed(int id)
     {
-      ProductType thisProductType = _db.ProductTypes.FirstOrDefault(productType => productType.ProductTypeId == id);
-      _db.ProductTypes.Remove(thisProductType);
+      Product thisProduct = _db.Products.FirstOrDefault(product => product.ProductId == id);
+      _db.Products.Remove(thisProduct);
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-    public ActionResult AddWarehouse(int id)
-    {
-      ProductType thisProductType = _db.ProductTypes.FirstOrDefault(productTypes => productTypes.ProductTypeId == id);
-      ViewBag.WarehouseId = new SelectList(_db.Warehouses, "WarehouseId", "WarehouseName");
-      return View(thisProductType);
-    }
-
-    [HttpPost]
-    public ActionResult AddWarehouse(ProductType productType, int warehouseId)
-    {
-      #nullable enable
-      WarehouseProductType? joinEntity = _db.WarehouseProductTypes.FirstOrDefault(join => (join.WarehouseId == warehouseId && join.ProductTypeId == productType.ProductTypeId));
-      #nullable disable
-      if (joinEntity == null && warehouseId != 0)
-      {
-        _db.WarehouseProductTypes.Add(new WarehouseProductType() { WarehouseId = warehouseId, ProductTypeId = productType.ProductTypeId });
-        _db.SaveChanges();
-      }
-      return RedirectToAction("Details", new { id = productType.ProductTypeId });
-    }   
-
-    [HttpPost]
-    public ActionResult DeleteJoinWarehouse(int joinId)
-    {
-      WarehouseProductType joinEntry = _db.WarehouseProductTypes.FirstOrDefault(entry => entry.WarehouseId == joinId);
-      _db.WarehouseProductTypes.Remove(joinEntry);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
-    }
-
-    public ActionResult AddPicklist(int id)
-    {
-      ProductType thisProductType = _db.ProductTypes.FirstOrDefault(productTypes => productTypes.ProductTypeId == id);
-      ViewBag.PicklistId = new SelectList(_db.Picklists, "PicklistId", "OrderNumber");
-      return View(thisProductType);
-    }
-
-    [HttpPost]
-    public ActionResult AddPicklist(ProductType productType, int picklistId)
-    {
-      #nullable enable
-      PicklistProductType? joinEntity = _db.PicklistProductTypes.FirstOrDefault(join => (join.PicklistId == picklistId && join.ProductTypeId == productType.ProductTypeId));
-      #nullable disable
-      if (joinEntity == null && picklistId != 0)
-      {
-        _db.PicklistProductTypes.Add(new PicklistProductType() { PicklistId = picklistId, ProductTypeId = productType.ProductTypeId });
-        _db.SaveChanges();
-      }
-      return RedirectToAction("Details", new { id = productType.ProductTypeId });
-    }
-
-    [HttpPost]
-    public ActionResult DeleteJoinPicklist(int joinId)
-    {
-      PicklistProductType joinEntry = _db.PicklistProductTypes.FirstOrDefault(entry => entry.PicklistId == joinId);
-      _db.PicklistProductTypes.Remove(joinEntry);
-      _db.SaveChanges();
-      return RedirectToAction("Index");
-    }  
   }
-}   
+}
