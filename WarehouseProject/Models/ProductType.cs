@@ -21,6 +21,7 @@ namespace WarehouseProject.Models
     public string Dimensions { get; set; }
     public List<PicklistProductType> JoinPicklistProductType { get; set; }
     public List<WarehouseProductType> JoinWarehouseProductType { get; }
+    public List<Product> Products { get; set; }
     public ApplicationUser User { get; set; }
     
   }

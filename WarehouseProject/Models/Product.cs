@@ -8,8 +8,9 @@ namespace WarehouseProject.Models
   public class Product
   {
     public int ProductId { get; set; }
-    public string ProductType { get; set; } 
+    public string ProductTypeId { get; set; } 
     [Required(ErrorMessage = "Please enter a type for the product.")]
+    public ProductType ProductType { get; set; }
     public string Description { get; set; }
     [Required(ErrorMessage = "Please enter a barcode for the product.")]
     public string Barcode { get; set; }
