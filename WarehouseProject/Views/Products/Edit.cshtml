@@ -1,0 +1,32 @@
+@{
+  Layout = "_Layout";
+}
+
+@model WarehouseProject.Models.Product
+
+<h2>Edit</h2>
+
+<h4>Edit this product: @Html.DisplayFor(model => model.Barcode)</h4>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.ProductId)
+
+  @Html.LabelFor(model => model.Barcode)
+  @Html.EditorFor(model => model.Barcode)
+  @Html.LabelFor(model => model.Description)
+  @Html.EditorFor(model => model.Description)
+  @Html.LabelFor(model => model.DateReceived)
+  @Html.EditorFor(model => model.DateReceived)
+  @Html.LabelFor(model => model.Picked)
+  @Html.EditorFor(model => model.Picked)
+  @Html.LabelFor(model => model.Bin)
+  @Html.EditorFor(model => model.Bin)
+
+  @Html.LabelFor(model => model.ProductType)
+  @Html.DropDownList("ProductTypefId")
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Back to list", "Index")</p>

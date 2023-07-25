@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@model WarehouseProject.Models.Product
+
+<h2>Are you sure you want to delete this?</h2>
+
+@Html.DisplayNameFor(model => model.Barcode): @Html.DisplayFor(model => model.Barcode)
+@using (Html.BeginForm())
+{
+  <input type="submit" value="Delete" />
+}
+@Html.ActionLink("Back to List", "Index")

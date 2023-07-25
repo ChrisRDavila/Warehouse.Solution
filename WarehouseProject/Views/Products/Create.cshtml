@@ -1,0 +1,30 @@
+@{
+  Layout = "_Layout";
+}
+
+@model WarehouseProject.Models.Product
+
+<h4>Add a new product</h4>
+
+<p>@Html.ValidationMessageFor(model => model.ProductTypeId, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+<p>@Html.ValidationMessageFor(model => model.Barcode, "", new { @class = "text-danger", @style = "font-weight: 600;" })</p>
+
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(model => model.Barcode)
+  @Html.TextBoxFor(model => model.Barcode)
+  @Html.LabelFor(model => model.Description)
+  @Html.TextBoxFor(model => model.Description)
+  @Html.LabelFor(model => model.DateReceived)
+  @Html.EditorFor(model => model.DateReceived)
+  @Html.LabelFor(model => model.Picked)
+  @Html.EditorFor(model => model.Picked)
+  @Html.LabelFor(model => model.Bin)
+  @Html.TextBoxFor(model => model.Bin)
+
+  @Html.LabelFor(model => model.ProductType)
+  @Html.DropDownList("ProductTypeId")
+
+  <input type="submit" value="Add new product" class="btn btn-default" />
+}
+<p>@Html.ActionLink("Show all products", "Index")</p>
