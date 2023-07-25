@@ -53,6 +53,7 @@ namespace WarehouseProject.Controllers
     public ActionResult Details(int id)
     {
       ProductType thisProductType = _db.ProductTypes
+          .Include(productType => productType.Products)
           .Include(productType => productType.JoinPicklistProductType)
           .ThenInclude(join => join.Picklist)
           .Include(productType => productType.JoinWarehouseProductType)
