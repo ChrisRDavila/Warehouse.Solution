@@ -13,25 +13,36 @@
 
 @using (Html.BeginForm())
 {
-    @Html.LabelFor(model => model.Name)
-    @Html.TextBoxFor(model => model.Name)<br>
-    @Html.LabelFor(model => model.Model)
-    @Html.TextBoxFor(model => model.Model)<br>
-    @Html.LabelFor(model => model.Description)
-    @Html.TextBoxFor(model => model.Description)<br>
-    @Html.LabelFor(model => model.TotalQuantity, "Total Quantity")
-    @Html.TextBoxFor(model => model.TotalQuantity)<br>
-    @Html.LabelFor(model => model.ShipUnit, "Units per shipment")
-    @Html.TextBoxFor(model => model.ShipUnit)<br>
-    @Html.LabelFor(model => model.Weight, "Weight in lbs")
-    @Html.TextBoxFor(model => model.Weight)<br>
-    @Html.LabelFor(model => model.Dimensions, "LxWxH in inches")
-    @Html.TextBoxFor(model => model.Dimensions)<br>
-    @* @Html.LabelFor(model => model.Picked, "Status")
-    @Html.EditorFor(model => model.Picked)<br>
-    @Html.LabelFor(model => model.Bin)
-    @Html.TextBoxFor(model => model.Bin)<br> *@
-    
+  <table class="table table-bordered table-hover table-striped" id="table-input">
+    <tr>
+      <th>@Html.LabelFor(model => model.Name)
+      <td>@Html.TextBoxFor(model => model.Name)</td></th>
+    </tr>
+    <tr>  
+      <th>@Html.LabelFor(model => model.Model)
+      <td>@Html.TextBoxFor(model => model.Model)</td></th>
+    </tr>
+    <tr>  
+      <th>@Html.LabelFor(model => model.Description)
+      <td>@Html.TextBoxFor(model => model.Description)</td></th>
+    </tr>
+    <tr>  
+      <th>@Html.LabelFor(model => model.TotalQuantity, "Total Quantity")
+      <td>@Html.TextBoxFor(model => model.TotalQuantity)</td></th>
+    </tr>
+    <tr>  
+      <th>@Html.LabelFor(model => model.ShipUnit, "Units per shipment")
+      <td>@Html.TextBoxFor(model => model.ShipUnit)</td></th>
+    </tr>
+    <tr>  
+      <th>@Html.LabelFor(model => model.Weight, "Weight in lbs")
+      <td>@Html.TextBoxFor(model => model.Weight)</td></th>
+    </tr>
+    <tr>  
+      <th>@Html.LabelFor(model => model.Dimensions, "LxWxH in inches")
+      <td>@Html.TextBoxFor(model => model.Dimensions)<br>
+    </tr>  
+  </table>  
 
 
     <input type="submit" value="Add new product type" class="btn btn-default" />
