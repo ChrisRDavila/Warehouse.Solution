@@ -46,6 +46,8 @@
 
 [prisma.io](https://www.prisma.io/dataguide/mysql/reading-and-querying-data/joining-tables)
 
+[W3 php tutorial](https://www.w3schools.com/php/)
+
 
 ## Known Bugs
 
