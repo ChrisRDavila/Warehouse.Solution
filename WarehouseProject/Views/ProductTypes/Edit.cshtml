@@ -11,21 +11,36 @@
 @using (Html.BeginForm())
 {
   @Html.HiddenFor(model => model.ProductTypeId)
-
-  @Html.LabelFor(model => model.Name)
-    @Html.EditorFor(model => model.Name)
-    @Html.LabelFor(model => model.Model)
-    @Html.EditorFor(model => model.Model)
-    @Html.LabelFor(model => model.Description)
-    @Html.EditorFor(model => model.Description)
-    @Html.LabelFor(model => model.TotalQuantity)
-    @Html.EditorFor(model => model.TotalQuantity)
-    @Html.LabelFor(model => model.ShipUnit)
-    @Html.EditorFor(model => model.ShipUnit)
-    @Html.LabelFor(model => model.Weight)
-    @Html.EditorFor(model => model.Weight)
-    @Html.LabelFor(model => model.Dimensions)
-    @Html.EditorFor(model => model.Dimensions)
+  <table class="table table-bordered table-hover table-striped" id="table-input">
+    <tr>
+      <th>@Html.LabelFor(model => model.Name)
+        <td>@Html.EditorFor(model => model.Name)</td></th>
+    </tr>
+    <tr>   
+        <th>@Html.LabelFor(model => model.Model)
+        <td>@Html.EditorFor(model => model.Model)</td></th>
+    </tr>
+    <tr> 
+        <th>@Html.LabelFor(model => model.Description)
+        <td>@Html.EditorFor(model => model.Description)</td></th>
+    </tr>
+    <tr> 
+        <th>@Html.LabelFor(model => model.TotalQuantity)
+        <td>@Html.EditorFor(model => model.TotalQuantity)</td></th>
+    </tr>
+    <tr> 
+        <th>@Html.LabelFor(model => model.ShipUnit)
+        <td>@Html.EditorFor(model => model.ShipUnit)</td></th>
+    </tr>
+    <tr> 
+        <th>@Html.LabelFor(model => model.Weight)
+        <td>@Html.EditorFor(model => model.Weight)</td></th>
+    </tr>
+    <tr> 
+        <th>@Html.LabelFor(model => model.Dimensions)
+        <td>@Html.EditorFor(model => model.Dimensions)</td></th>
+    </tr>  
+  </table> 
 
 
   <input type="submit" value="Save" />
