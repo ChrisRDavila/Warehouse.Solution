@@ -15,26 +15,36 @@
 
 @using (Html.BeginForm())
 {
-    @Html.LabelFor(model => model.Branch)
-    @Html.TextBoxFor(model => model.Branch)
-    <br />
-    @Html.LabelFor(model => model.Address)
-    @Html.TextBoxFor(model => model.Address)
-    <br />
-    @Html.LabelFor(model => model.City)
-    @Html.TextBoxFor(model => model.City)
-    <br />
-    @Html.LabelFor(model => model.State)
-    @Html.TextBoxFor(model => model.State)
-    <br />
-    @Html.LabelFor(model => model.Zipcode)
-    @Html.TextBoxFor(model => model.Zipcode)
-    <br />
-    @Html.LabelFor(model => model.Notes)
-    @Html.TextBoxFor(model => model.Notes)
-    <br />
+  <table class="table table-bordered table-hover table-striped" id="table-input">
+  <tr>
+    <th>@Html.LabelFor(model => model.Branch)
+    <td>@Html.TextBoxFor(model => model.Branch)</td></th>
+  </tr>
+  <tr>
+    <th>@Html.LabelFor(model => model.Address)
+    <td>@Html.TextBoxFor(model => model.Address)</td></th>
+  </tr>
+  <tr>
+    <th>@Html.LabelFor(model => model.City)
+    <td>@Html.TextBoxFor(model => model.City)</td></th>
+  </tr>
+  <tr>
+    <th>@Html.LabelFor(model => model.State)
+    <td>@Html.TextBoxFor(model => model.State)</td></th>
+  </tr>
+  <tr>
+    <th>@Html.LabelFor(model => model.Zipcode)
+    <td>@Html.TextBoxFor(model => model.Zipcode)</td></th>
+  </tr>
+  <tr>
+    <th>@Html.LabelFor(model => model.Notes)
+    <td>@Html.TextBoxFor(model => model.Notes)</td></th>
+  </tr>
+  
 
 
     <input type="submit" value="Add new warehouse" class="btn btn-default" />
+  </table>
 }
+
 <p>@Html.ActionLink("Show all warehouses", "Index")</p>

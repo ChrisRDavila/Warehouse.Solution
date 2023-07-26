@@ -39,7 +39,7 @@
 }
 else
 {
-  <h4>product type details</h4>
+  <h4>The following warehouses carry this product</h4>
   <ul>
     @foreach(WarehouseProductType join in Model.JoinWarehouseProductType)
     {
@@ -59,7 +59,7 @@ else
 }
 else
 {
-  <h4>product type details</h4>
+  <h4>This product is needed for the following picklists</h4>
   <ul>
     @foreach(PicklistProductType join in Model.JoinPicklistProductType)
     {
