@@ -5,7 +5,6 @@
 @using WarehouseProject.Models;
 
 <h1>Items for @User.Identity.Name</h1>
-
 @if (@Model.Count == 0)
 {
   <h3>No products have been added yet!</h3>
@@ -19,6 +18,7 @@ else
     }
   </ul>
 }
+</table>
 
 <p>@Html.ActionLink("Add new product", "Create")</p>
 <p>@Html.ActionLink("Home", "Index", "Home")</p>

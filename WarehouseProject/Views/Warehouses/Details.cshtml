@@ -7,13 +7,27 @@
 
 <h2>Warehouse Details</h2>
 <hr />
-<h3>@Html.DisplayNameFor(model => model.Branch): @Html.DisplayFor(model => model.Branch)</h3>
-<h3>@Html.DisplayNameFor(model => model.Address): @Html.DisplayFor(model => model.Address)</h3>
-<h3>@Html.DisplayNameFor(model => model.City): @Html.DisplayFor(model => model.City)</h3>
-<h3>@Html.DisplayNameFor(model => model.State): @Html.DisplayFor(model => model.State)</h3>
-<h3>@Html.DisplayNameFor(model => model.Zipcode): @Html.DisplayFor(model => model.Zipcode)</h3>
-<h3>@Html.DisplayNameFor(model => model.Notes): @Html.DisplayFor(model => model.Notes)</h3>
-
+<table>
+  <tr>
+    <th>@Html.DisplayNameFor(model => model.Branch): @Html.DisplayFor(model => model.Branch)</th>
+  </tr>
+  <tr>  
+    <th>@Html.DisplayNameFor(model => model.Address): @Html.DisplayFor(model => model.Address)</th>
+  </tr> 
+  <tr> 
+    <th>@Html.DisplayNameFor(model => model.City): @Html.DisplayFor(model => model.City)</th>
+  </tr>
+  <tr>  
+    <th>@Html.DisplayNameFor(model => model.State): @Html.DisplayFor(model => model.State)</th>
+  </tr>
+  <tr>  
+    <th>@Html.DisplayNameFor(model => model.Zipcode): @Html.DisplayFor(model => model.Zipcode)</th>
+  </tr>
+  <tr>  
+    <th>@Html.DisplayNameFor(model => model.Notes): @Html.DisplayFor(model => model.Notes)</th>
+  </tr>  
+  </tr>  
+</table>
 
 @if(@Model.JoinWarehouseProductType.Count == 0)
 {
