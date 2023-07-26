@@ -11,15 +11,24 @@
 
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.Barcode)
-  @Html.TextBoxFor(model => model.Barcode)<br>
-  @Html.LabelFor(model => model.Description)
-  @Html.TextBoxFor(model => model.Description)<br>
-  @Html.LabelFor(model => model.DateReceived)
-  @Html.EditorFor(model => model.DateReceived)<br>
-
-  @Html.LabelFor(model => model.ProductType)
-  @Html.DropDownList("ProductTypeId")<br>
+  <table class="table table-bordered table-hover table-striped" id="table-input">
+    <tr>
+      <th>@Html.LabelFor(model => model.Barcode)
+      <td>@Html.TextBoxFor(model => model.Barcode)</td></th>
+    </tr>
+    <tr>    
+      <th>@Html.LabelFor(model => model.Description)
+      <td>@Html.TextBoxFor(model => model.Description)</td></th>
+    </tr>
+    <tr>    
+      <th>@Html.LabelFor(model => model.DateReceived)
+      <td>@Html.EditorFor(model => model.DateReceived)</td></th>
+    </tr>
+    <tr>    
+      <th>@Html.LabelFor(model => model.ProductType)
+      <td>@Html.DropDownList("ProductTypeId")</td></th>
+    </tr>
+  </table>  
 
   <input type="submit" value="Add new product" class="btn btn-default" />
 }

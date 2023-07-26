@@ -12,18 +12,34 @@
 <div class="input">
 @using (Html.BeginForm())
 {
-  @Html.LabelFor(model => model.OrderNumber)
-  @Html.TextBoxFor(model => model.OrderNumber)<br>
-  @Html.LabelFor(model => model.OrderFor)
-  @Html.TextBoxFor(model => model.OrderFor)<br>
-  @Html.LabelFor(model => model.Priority)
-  @Html.EditorFor(model => model.Priority)<br>
-  @Html.LabelFor(model => model.Carrier)
-  @Html.EditorFor(model => model.Carrier)<br>
-  @Html.LabelFor(model => model.OrderDate)
-  @Html.EditorFor(model => model.OrderDate)<br>
-  @Html.LabelFor(model => model.ShipBy)
-  @Html.EditorFor(model => model.ShipBy)<br>
+  <table class="table table-bordered table-hover table-striped" id="table-input">
+    <tr>
+      <th>@Html.LabelFor(model => model.OrderNumber)
+      <td>@Html.TextBoxFor(model => model.OrderNumber)</td></th>
+    </tr>
+    <tr>   
+      <th>@Html.LabelFor(model => model.OrderFor)
+      <td>@Html.TextBoxFor(model => model.OrderFor)</td></th>
+    </tr>
+    <tr>   
+      <th>@Html.LabelFor(model => model.Priority)
+      <td>@Html.EditorFor(model => model.Priority)</td></th>
+    </tr>
+    <tr>   
+      <th>@Html.LabelFor(model => model.Carrier)
+      <td>@Html.EditorFor(model => model.Carrier)</td></th>
+    </tr>
+    <tr>   
+      <th>@Html.LabelFor(model => model.OrderDate)
+      <td>@Html.EditorFor(model => model.OrderDate)</td></th>
+    </tr>
+    <tr>   
+      <th>@Html.LabelFor(model => model.ShipBy)
+      <td>@Html.EditorFor(model => model.ShipBy)</td></th>
+    </tr>  
+  </table>   
+
+
   <input type="submit" value="Add new picklist" />
 }
 </div>

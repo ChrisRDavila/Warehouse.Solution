@@ -13,24 +13,32 @@
 {
   @Html.HiddenFor(model => model.WarehouseId)
 
-  @Html.LabelFor(model => model.Branch)
-    @Html.EditorFor(model => model.Branch)
-    <br />
-    @Html.LabelFor(model => model.Address)
-    @Html.EditorFor(model => model.Address)
-    <br />
-    @Html.LabelFor(model => model.City)
-    @Html.EditorFor(model => model.City)
-    <br />
-    @Html.LabelFor(model => model.State)
-    @Html.EditorFor(model => model.State)
-    <br />
-    @Html.LabelFor(model => model.Zipcode)
-    @Html.EditorFor(model => model.Zipcode)
-    <br />
-    @Html.LabelFor(model => model.Notes)
-    @Html.EditorFor(model => model.Notes)
-    <br />
+  <table class="table table-bordered table-hover table-striped" id="table-input">
+    <tr>
+        <th>@Html.LabelFor(model => model.Branch)
+        <td>@Html.EditorFor(model => model.Branch)</td></th>
+    </tr>
+    <tr> 
+        <th>@Html.LabelFor(model => model.Address)
+        <td>@Html.EditorFor(model => model.Address)</td></th>
+    </tr>
+    <tr> 
+        <th>@Html.LabelFor(model => model.City)
+        <td>@Html.EditorFor(model => model.City)</td></th>
+    </tr>
+    <tr> 
+        <th>@Html.LabelFor(model => model.State)
+        <td>@Html.EditorFor(model => model.State)</td></th>
+    </tr>
+    <tr> 
+        <th>@Html.LabelFor(model => model.Zipcode)
+        <td>@Html.EditorFor(model => model.Zipcode)</td></th>
+    </tr>
+    <tr> 
+        <th>@Html.LabelFor(model => model.Notes)
+        <td>@Html.EditorFor(model => model.Notes)</td></th>
+    </tr>  
+  </table>  
 
   <input type="submit" value="Save" class="btn btn-primary" />
 }
