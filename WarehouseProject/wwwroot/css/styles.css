@@ -72,3 +72,13 @@ input.btn
 	background-color:burlywood;
 	color: cornflowerblue;
 }
+
+table
+{
+	background-image: url('./blbg.jpg');
+}
+
+.table-bordered
+{
+	color: azure;
+}
