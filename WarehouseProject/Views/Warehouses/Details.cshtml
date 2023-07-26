@@ -9,29 +9,25 @@
 <hr />
 <table class="table table-bordered">
   <tr>
-  <td>
-    <th>@Html.DisplayNameFor(model => model.Branch): @Html.DisplayFor(model => model.Branch)</th>
-  </td>
+    <th>@Html.DisplayNameFor(model => model.Branch)<td> @Html.DisplayFor(model => model.Branch)</td></th>
   </tr>
-  <tr>
-  <td>  
-    <th>@Html.DisplayNameFor(model => model.Address): @Html.DisplayFor(model => model.Address)</th>
-  </td>
+  <tr> 
+    <th>@Html.DisplayNameFor(model => model.Address)<td>@Html.DisplayFor(model => model.Address)</td></th>
   </tr> 
   <tr> 
-    <th>@Html.DisplayNameFor(model => model.City): @Html.DisplayFor(model => model.City)</th>
+    <th>@Html.DisplayNameFor(model => model.City)<td> @Html.DisplayFor(model => model.City)</td></th>
   </tr>
   <tr>  
-    <th>@Html.DisplayNameFor(model => model.State): @Html.DisplayFor(model => model.State)</th>
+    <th>@Html.DisplayNameFor(model => model.State)<td> @Html.DisplayFor(model => model.State)</td></th>
   </tr>
   <tr>  
-    <th>@Html.DisplayNameFor(model => model.Zipcode): @Html.DisplayFor(model => model.Zipcode)</th>
+    <th>@Html.DisplayNameFor(model => model.Zipcode)<td> @Html.DisplayFor(model => model.Zipcode)</td></th>
   </tr>
   <tr>  
-    <th>@Html.DisplayNameFor(model => model.Notes): @Html.DisplayFor(model => model.Notes)</th>
+    <th>@Html.DisplayNameFor(model => model.Notes)<td> @Html.DisplayFor(model => model.Notes)</td></th>
   </tr>  
-  </tr>  
-</table>
+</table>    
+
 
 @if(@Model.JoinWarehouseProductType.Count == 0)
 {
@@ -52,7 +48,6 @@ else
     }
   </ul>
 }
-
 <p>@Html.ActionLink("Back to list", "Index")</p>
 <p>@Html.ActionLink("Edit this Warehouse", "Edit", new { id = Model.WarehouseId })</p>
 <p>@Html.ActionLink("Add a product type to this warehouse", "AddProductType", new { id = Model.WarehouseId })</p>
