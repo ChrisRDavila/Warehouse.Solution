@@ -3,7 +3,72 @@ div#footer {
 	bottom:0px;
 	left:0px;
 	width:100%;
-	color:#CCC;
-	background:#333;
+	color: coral;
+	background-color: aliceblue;
 	padding:8px;
+}
+
+body {
+  background-image: url('./factbg3.jpg');
+  color: azure;
+  background-size: cover;
+  background-position:center;
+  background-repeat:round;
+  background-attachment: fixed;
+  font-family: 'Times New Roman', Times, serif;
+	font-size: 125%;
+  border: 20px;
+  padding: 25px;
+  margin: 50px;
+	margin-bottom: 150px;
+  opacity: 85%;
+	text-align: justify;
+	display: block;
+	box-sizing: border-box;
+	float:left;
+}
+.fade-in-down
+{
+	animation: fadeInDown 2s;
+}
+@keyframes fadeInDown 
+{
+	0% { 
+		opacity: 0; 
+		transform: translateY(-30px);
+	}
+
+	100% { 
+		opacity: 1; 
+		transform: translate(0);
+	}
+}
+
+input
+{
+	background-color:blanchedalmond;
+	color:lightsalmon;
+	border-radius: 10px;
+}
+
+a
+{
+	color:cornsilk;
+	font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+	font-weight: 100;
+}
+a:hover
+{
+	color: darkred;
+}
+
+select
+{
+	background-color:blanchedalmond;
+	color: coral;
+}
+input.btn
+{
+	background-color:burlywood;
+	color: cornflowerblue;
 }
