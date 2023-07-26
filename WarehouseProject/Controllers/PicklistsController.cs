@@ -62,7 +62,7 @@ namespace WarehouseProject.Controllers
     {
       Picklist thisPicklist = _db.Picklists.FirstOrDefault(picklist => picklist.PicklistId == id);
       return View(thisPicklist);
-    }//
+    }
 
     [HttpPost]
     public ActionResult Edit(Picklist picklist)
