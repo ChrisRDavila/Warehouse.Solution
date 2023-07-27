@@ -53,8 +53,8 @@ namespace WarehouseProject.Controllers
     {
       Picklist thisPicklist = _db.Picklists
                                   .Include(picklist => picklist.JoinPicklistProductType)
-          .ThenInclude(join => join.ProductType)
-          .FirstOrDefault(picklist => picklist.PicklistId == id);
+                                  .ThenInclude(join => join.ProductType)
+                                  .FirstOrDefault(picklist => picklist.PicklistId == id);
       return View(thisPicklist);
     }
 
@@ -103,7 +103,6 @@ namespace WarehouseProject.Controllers
       if (joinEntity == null && productTypeId != 0)
       {
         _db.PicklistProductTypes.Add(new PicklistProductType() { ProductTypeId = productTypeId, PicklistId = picklist.PicklistId });
-        _db.Picklists.Update(picklist);
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = picklist.PicklistId });
