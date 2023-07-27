@@ -204,6 +204,8 @@ namespace WarehouseProject.Migrations
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     OrderFor = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
+                    QuantityNeeded = table.Column<int>(type: "int", nullable: false),
+                    Fulfilled = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     Priority = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Carrier = table.Column<string>(type: "longtext", nullable: true)
@@ -293,7 +295,7 @@ namespace WarehouseProject.Migrations
                     PicklistProductTypeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     Picked = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    QuantityNeeded = table.Column<int>(type: "int", nullable: false),
+                    PicklistQuantity = table.Column<int>(type: "int", nullable: false),
                     PicklistId = table.Column<int>(type: "int", nullable: false),
                     ProductTypeId = table.Column<int>(type: "int", nullable: false)
                 },

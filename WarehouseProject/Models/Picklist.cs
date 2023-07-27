@@ -11,7 +11,8 @@ namespace WarehouseProject.Models
     public string OrderNumber { get; set; }
     [Required(ErrorMessage = "Please enter a name for the order.")]
     public string OrderFor { get; set; }
-    // public Boolean Fulfilled { get; set; }
+    public int QuantityNeeded { get; set; }
+    public Boolean Fulfilled { get; set; }
     public string Priority { get; set; }
     public string Carrier { get; set; }
     public DateTime OrderDate { get; set; }

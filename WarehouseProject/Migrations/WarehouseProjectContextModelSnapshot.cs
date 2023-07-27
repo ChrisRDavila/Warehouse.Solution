@@ -220,6 +220,9 @@ namespace WarehouseProject.Migrations
                     b.Property<string>("Carrier")
                         .HasColumnType("longtext");
 
+                    b.Property<bool>("Fulfilled")
+                        .HasColumnType("tinyint(1)");
+
                     b.Property<DateTime>("OrderDate")
                         .HasColumnType("datetime(6)");
 
@@ -233,6 +236,9 @@ namespace WarehouseProject.Migrations
 
                     b.Property<string>("Priority")
                         .HasColumnType("longtext");
+
+                    b.Property<int>("QuantityNeeded")
+                        .HasColumnType("int");
 
                     b.Property<DateTime>("ShipBy")
                         .HasColumnType("datetime(6)");
@@ -259,10 +265,10 @@ namespace WarehouseProject.Migrations
                     b.Property<int>("PicklistId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProductTypeId")
+                    b.Property<int>("PicklistQuantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("QuantityNeeded")
+                    b.Property<int>("ProductTypeId")
                         .HasColumnType("int");
 
                     b.HasKey("PicklistProductTypeId");

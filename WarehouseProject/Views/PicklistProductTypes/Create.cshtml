@@ -1,0 +1,37 @@
+@{
+  Layout = "_Layout";
+}
+
+@model WarehouseProject.Models.PicklistProductType
+@using WarehouseProject.Models
+
+<h4>Add a new picklist</h4>
+
+
+
+@if (@Model.JoinPicklistProductType.Count == 0)
+{
+  <p>No product types have been added to this picklist yet!</p>
+} 
+else
+{
+  <h3>picklist products</h3>
+  <ul>
+    @foreach(PicklistProductType join in Model.JoinPicklistProductType)
+    {
+      <li>product type in the picklist</li>
+        @using (Html.BeginForm())
+        {
+        <li>@Html.LabelFor(model => model.QuantityNeeded):@Html.TextBoxFor(model => model.QuantityNeeded)</li>  
+        <li>@Html.LabelFor(model => model.Fulfilled): @Html.TextBoxFor(model => model.Fulfilled)  </li>
+
+
+        }
+        <input type="submit" value="Add new picklist" />
+        
+    }
+  </ul>  
+}   
+ 
+
+<p>@Html.ActionLink("Show all picklists", "Index")</p>

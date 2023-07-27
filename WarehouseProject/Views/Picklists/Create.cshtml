@@ -3,6 +3,7 @@
 }
 
 @model WarehouseProject.Models.Picklist
+@using WarehouseProject.Models
 
 <h4>Add a new picklist</h4>
 
@@ -40,7 +41,9 @@
   </table>   
 
 
+
   <input type="submit" value="Add new picklist" />
 }
 </div>
+
 <p>@Html.ActionLink("Show all picklists", "Index")</p>
