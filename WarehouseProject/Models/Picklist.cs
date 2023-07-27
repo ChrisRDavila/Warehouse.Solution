@@ -9,7 +9,6 @@ namespace WarehouseProject.Models
     public int PicklistId { get; set; }
     [Required(ErrorMessage = "Please enter an order number.")]
     public string OrderNumber { get; set; }
-    [Required(ErrorMessage = "Please enter a name for the order.")]
     public string OrderFor { get; set; }
     public int QuantityNeeded { get; set; }
     public Boolean Fulfilled { get; set; }

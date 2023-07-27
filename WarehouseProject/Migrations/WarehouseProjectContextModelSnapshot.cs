@@ -227,7 +227,6 @@ namespace WarehouseProject.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("OrderFor")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("OrderNumber")

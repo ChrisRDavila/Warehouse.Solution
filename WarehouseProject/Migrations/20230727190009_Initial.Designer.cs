@@ -11,7 +11,7 @@ using WarehouseProject.Models;
 namespace WarehouseProject.Migrations
 {
     [DbContext(typeof(WarehouseProjectContext))]
-    [Migration("20230727171733_Initial")]
+    [Migration("20230727190009_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -229,7 +229,6 @@ namespace WarehouseProject.Migrations
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("OrderFor")
-                        .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<string>("OrderNumber")

@@ -202,7 +202,7 @@ namespace WarehouseProject.Migrations
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
                     OrderNumber = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    OrderFor = table.Column<string>(type: "longtext", nullable: false)
+                    OrderFor = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     QuantityNeeded = table.Column<int>(type: "int", nullable: false),
                     Fulfilled = table.Column<bool>(type: "tinyint(1)", nullable: false),
