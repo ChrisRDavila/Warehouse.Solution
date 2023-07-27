@@ -103,7 +103,7 @@ namespace WarehouseProject.Controllers
       if (joinEntity == null && productTypeId != 0)
       {
         _db.PicklistProductTypes.Add(new PicklistProductType() { ProductTypeId = productTypeId, PicklistId = picklist.PicklistId });
-        
+        _db.Picklists.Update(picklist);
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = picklist.PicklistId });
