@@ -239,6 +239,7 @@ namespace WarehouseProject.Migrations
                     Description = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     TotalQuantity = table.Column<int>(type: "int", nullable: false),
+                    QuantityNeeded = table.Column<int>(type: "int", nullable: false),
                     ShipUnit = table.Column<int>(type: "int", nullable: false),
                     Weight = table.Column<decimal>(type: "decimal(65,30)", nullable: false),
                     Dimensions = table.Column<string>(type: "longtext", nullable: true)

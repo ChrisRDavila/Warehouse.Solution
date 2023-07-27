@@ -343,6 +343,9 @@ namespace WarehouseProject.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
+                    b.Property<int>("QuantityNeeded")
+                        .HasColumnType("int");
+
                     b.Property<int>("ShipUnit")
                         .HasColumnType("int");
 

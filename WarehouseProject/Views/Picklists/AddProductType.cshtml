@@ -15,7 +15,13 @@
     @Html.Label("Select productType")
     @Html.DropDownList("ProductTypeId")
 
-    
+    @Html.LabelFor(model => model.QuantityNeeded)
+    @Html.EditorFor(model => model.QuantityNeeded)
+
+    @Html.LabelFor(model => model.Fulfilled)
+    @Html.EditorFor(model => model.Fulfilled)
+
+
 
     <input type="submit" value="Save" />
 }

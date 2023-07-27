@@ -11,7 +11,7 @@ using WarehouseProject.Models;
 namespace WarehouseProject.Migrations
 {
     [DbContext(typeof(WarehouseProjectContext))]
-    [Migration("20230727164926_Initial")]
+    [Migration("20230727171733_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -344,6 +344,9 @@ namespace WarehouseProject.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("longtext");
+
+                    b.Property<int>("QuantityNeeded")
+                        .HasColumnType("int");
 
                     b.Property<int>("ShipUnit")
                         .HasColumnType("int");
