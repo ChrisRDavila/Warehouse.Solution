@@ -1,0 +1,24 @@
+@{
+  Layout = "_Layout";
+}
+
+@using WarehouseProject.Models;
+
+<h1>Picklists Products</h1>
+
+@if (@Model.Count == 0)
+{
+  <h3>the following picklists are assigned to picklists and ready to update</h3>
+} 
+
+<ul>
+  @foreach(PicklistProductType picklistProductType in Model)
+  {
+    <li>@Html.ActionLink($"{picklistProductType.PicklistProductTypeId}", "Details", new { id = picklistProductType.PicklistProductTypeId })</li>
+  }
+</ul>
+
+<p>@Html.ActionLink("Add new picklist", "Create")</p>
+<p>@Html.ActionLink("Add new Product Type", "Create", "ProductTypes")</p>
+@* <p>@Html.ActionLink("Home", "Index", "Home")</p> *@
+<button class="btn">@Html.ActionLink(">", "Index", "Home")<i class="fa fa-home"></i></button><br>

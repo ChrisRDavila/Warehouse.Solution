@@ -11,7 +11,7 @@ using WarehouseProject.Models;
 namespace WarehouseProject.Migrations
 {
     [DbContext(typeof(WarehouseProjectContext))]
-    [Migration("20230727041050_Initial")]
+    [Migration("20230727164926_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -261,23 +261,33 @@ namespace WarehouseProject.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<bool>("Picked")
+                    b.Property<bool>("Fulfilled")
                         .HasColumnType("tinyint(1)");
 
                     b.Property<int>("PicklistId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PicklistQuantity")
+                    b.Property<int?>("PicklistProductTypeId1")
                         .HasColumnType("int");
 
                     b.Property<int>("ProductTypeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("QuantityNeeded")
+                        .HasColumnType("int");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("varchar(255)");
+
                     b.HasKey("PicklistProductTypeId");
 
                     b.HasIndex("PicklistId");
 
+                    b.HasIndex("PicklistProductTypeId1");
+
                     b.HasIndex("ProductTypeId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("PicklistProductTypes");
                 });
@@ -487,15 +497,25 @@ namespace WarehouseProject.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("WarehouseProject.Models.PicklistProductType", null)
+                        .WithMany("JoinPicklistProductType")
+                        .HasForeignKey("PicklistProductTypeId1");
+
                     b.HasOne("WarehouseProject.Models.ProductType", "ProductType")
                         .WithMany("JoinPicklistProductType")
                         .HasForeignKey("ProductTypeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("WarehouseProject.Models.ApplicationUser", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId");
+
                     b.Navigation("Picklist");
 
                     b.Navigation("ProductType");
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("WarehouseProject.Models.Product", b =>
@@ -553,6 +573,11 @@ namespace WarehouseProject.Migrations
                 });
 
             modelBuilder.Entity("WarehouseProject.Models.Picklist", b =>
+                {
+                    b.Navigation("JoinPicklistProductType");
+                });
+
+            modelBuilder.Entity("WarehouseProject.Models.PicklistProductType", b =>
                 {
                     b.Navigation("JoinPicklistProductType");
                 });

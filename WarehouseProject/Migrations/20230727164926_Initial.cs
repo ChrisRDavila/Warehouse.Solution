@@ -294,14 +294,27 @@ namespace WarehouseProject.Migrations
                 {
                     PicklistProductTypeId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Picked = table.Column<bool>(type: "tinyint(1)", nullable: false),
-                    PicklistQuantity = table.Column<int>(type: "int", nullable: false),
+                    Fulfilled = table.Column<bool>(type: "tinyint(1)", nullable: false),
+                    QuantityNeeded = table.Column<int>(type: "int", nullable: false),
                     PicklistId = table.Column<int>(type: "int", nullable: false),
-                    ProductTypeId = table.Column<int>(type: "int", nullable: false)
+                    ProductTypeId = table.Column<int>(type: "int", nullable: false),
+                    UserId = table.Column<string>(type: "varchar(255)", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PicklistProductTypeId1 = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PicklistProductTypes", x => x.PicklistProductTypeId);
+                    table.ForeignKey(
+                        name: "FK_PicklistProductTypes_AspNetUsers_UserId",
+                        column: x => x.UserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id");
+                    table.ForeignKey(
+                        name: "FK_PicklistProductTypes_PicklistProductTypes_PicklistProductTyp~",
+                        column: x => x.PicklistProductTypeId1,
+                        principalTable: "PicklistProductTypes",
+                        principalColumn: "PicklistProductTypeId");
                     table.ForeignKey(
                         name: "FK_PicklistProductTypes_Picklists_PicklistId",
                         column: x => x.PicklistId,
@@ -424,9 +437,19 @@ namespace WarehouseProject.Migrations
                 column: "PicklistId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_PicklistProductTypes_PicklistProductTypeId1",
+                table: "PicklistProductTypes",
+                column: "PicklistProductTypeId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_PicklistProductTypes_ProductTypeId",
                 table: "PicklistProductTypes",
                 column: "ProductTypeId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PicklistProductTypes_UserId",
+                table: "PicklistProductTypes",
+                column: "UserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Picklists_UserId",
