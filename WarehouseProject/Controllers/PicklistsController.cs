@@ -103,7 +103,11 @@ namespace WarehouseProject.Controllers
       if (joinEntity == null && productTypeId != 0)
       {
         _db.PicklistProductTypes.Add(new PicklistProductType() { ProductTypeId = productTypeId, PicklistId = picklist.PicklistId });
-        _db.Picklists.Update(picklist);
+        Picklist currentPicklist = _db.Picklists.FirstOrDefault(picklists => picklists.PicklistId == picklist.PicklistId);
+        currentPicklist.QuantityNeeded = picklist.QuantityNeeded;
+        currentPicklist.Fulfilled = picklist.Fulfilled;
+        // _db.Picklists.Update(picklist);
+        ViewBag.success = "Your changese have been saved.";
         _db.SaveChanges();
       }
       return RedirectToAction("Details", new { id = picklist.PicklistId });
